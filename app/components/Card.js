@@ -4,9 +4,13 @@ import AppText from './AppText';
 import useAuth from '../auth/useAuth';
 import { useTheme } from '../hooks/ThemeContext';
 
-function Card({item,XScale=1,YScale=1,TextSize=1,titleOnly={titleOnly},disOnly={disOnly}}) {
+function Card({item,XScale=1,YScale=1,TextSize=1,titleOnly=false,disOnly=false}) {
     const {width,h} =useAuth()
     const {theme} = useTheme()
+
+    console.log('D====================================');
+    console.log(item);
+    console.log('====================================');
 return (
 <TouchableOpacity
     style={[styles.scrowCard,{backgroundColor:theme.white,width:width*0.3*XScale,padding:'1%',borderColor:theme.primary}]}

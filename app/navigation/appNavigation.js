@@ -6,9 +6,13 @@ import { MaterialCommunityIcons,FontAwesome,Ionicons } from '@expo/vector-icons'
 import routes from './routes';
 import { useTheme } from '../hooks/ThemeContext';
 import SearchNavigator from './searchNavigation';
+import AccountNavigator from './accountNavigation';
+import useAuth from '../auth/useAuth';
+import SearchButton from './SearchButton';
 const Tab = createBottomTabNavigator();
-const AppNavigator = ({width})=>{
+const AppNavigator = ()=>{
   const {theme}=useTheme();
+  const {width}=useAuth();
 return (
   <>
     <Tab.Navigator
@@ -19,11 +23,15 @@ return (
         if (route.name === routes.HOME_TAB) {
           // iconName = focused ? 'home-circle' : 'home-circle-outline';
           // size = focused ? 30: 24;
-          return <FontAwesome name="home" size={24} color="black" />
+          return <Ionicons name={focused?"ios-home":"ios-home-outline"} size={width*0.08} color={focused?theme.white:theme.secondary} />
         }
 
       else if (route.name === routes.MAIN_SEARCH_TAB) {
-          return <Ionicons name="md-search-circle" size={24} color="black" />
+          return <Ionicons name={focused?"md-search-circle":"md-search-circle-outline"} size={width*0.08} color={focused?theme.white:theme.secondary} />
+        }
+      else if (route.name === routes.ACCOUNT_TAB) {
+
+          return  <MaterialCommunityIcons name={focused?"account-circle":"account-circle-outline"} size={width*0.08} color={focused?theme.white:theme.secondary} />
         }
   
   
@@ -33,16 +41,33 @@ return (
         );
       },
       // tabBarShowLabel:false,
-      // tabBarActiveTintColor: theme.white=='#fff'?theme.secondary:theme.dark,
-      // tabBarInactiveTintColor: theme.white=='#fff'?theme.primary:'#aaa',
+      tabBarActiveTintColor: theme.white=='#fff'?theme.white:theme.secondary,
+      tabBarInactiveTintColor: theme.white=='#fff'?theme.secondary:'#aaa',
       // tabBarHideOnKeyboard:true,
       // pressColor: 'gray',
-      // tabBarInactiveBackgroundColor:theme.white,
-      // tabBarActiveBackgroundColor:theme.white
+      tabBarInactiveBackgroundColor:theme.primary,
+      tabBarActiveBackgroundColor:theme.primary,
       })}
       >
-      <Tab.Screen name={routes.HOME_TAB} component={HomeNavigator} options={{headerShown:false}}/>
-      <Tab.Screen name={routes.MAIN_SEARCH_TAB} component={SearchNavigator} options={{headerShown:false,tabBarLabel:"Search"}}/>
+      <Tab.Screen name={routes.HOME_TAB} component={HomeNavigator} options={{headerShown:false,tabBarLabel:"Home"}}/>
+      <Tab.Screen
+        name={routes.MAIN_SEARCH_TAB}
+        component={SearchNavigator}
+        options={({ navigation }) => ({
+          tabBarButton: () => (
+            <SearchButton
+              onPress={() => {
+                navigation.navigate(routes.MAIN_SEARCH_TAB, {
+                  screen: routes.MAIN_SEARCH, // Navigate to the first screen of the tab
+                });
+              }}
+            />
+          ),
+          headerShown:false
+        })}
+      />
+
+      <Tab.Screen name={routes.ACCOUNT_TAB} component={AccountNavigator} options={{headerShown:false,tabBarLabel:"Account"}}/>
       
     </Tab.Navigator>
     </>

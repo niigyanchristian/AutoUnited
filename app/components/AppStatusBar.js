@@ -20,7 +20,7 @@ function AppStatusBar(props) {
     }else{
         return (
         <StatusBar
-        backgroundColor={theme.white=='#fff'?theme.dark:theme.white}// Change to your desired background color
+        backgroundColor={theme.white=='#fff'?'#d19b98':theme.white}// Change to your desired background color
         barStyle={"light-content"} // Change to "dark-content" for dark text
       />
         )

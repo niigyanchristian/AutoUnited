@@ -1,5 +1,8 @@
 export default Object.freeze({
   FIRST:'first',
+  SIGN_IN:'SignIn',
+  SIGN_UP:'SignUp',
+
   HOME_TAB:'AppHome',
   HOME:'home',
   ACCOUNT_TAB:'AccountTab',
@@ -12,4 +15,7 @@ export default Object.freeze({
   MAIN_SEARCH_TAB:'MainSearchTab',
   MAIN_SEARCH:'MainSearch',
   DETAILS:'Details'
+
+
+
 });

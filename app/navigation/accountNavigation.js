@@ -8,7 +8,7 @@ import { Platform } from 'react-native';
 
 const Stack = createNativeStackNavigator();
 
-const SearchNavigator = ({navigation,route}) =>{
+const AccountNavigator = ({navigation,route}) =>{
   const {theme}=useTheme();
   const tabHiddenRoutes = [];
   {Platform.OS=='ios'?null:React.useLayoutEffect(() => {
@@ -25,11 +25,10 @@ const SearchNavigator = ({navigation,route}) =>{
       },
       headerTitleAlign:'center'
     }}>
-      <Stack.Screen name={routes.MAIN_SEARCH} component={controler.MainSearchStackScreen} options={{headerShown:false}}/>
-      <Stack.Screen name={routes.CATEGORY} component={controler.CategoryStackScreen} options={{headerShown:false}}/>
+      <Stack.Screen name={routes.HOME} component={controler.AccountStackScreen} options={{headerShown:false}}/>
+      {/* <Stack.Screen name={routes.CATEGORY} component={controler.CategoryStackScreen} options={{headerShown:false}}/>
       <Stack.Screen name={routes.SEARCH} component={controler.SearchStackScreen} options={{headerShown:false}}/>
-      <Stack.Screen name={routes.SEARCH_RESULTS} component={controler.SearchResultsStackScreen} options={{headerShown:false,}}/>
-      <Stack.Screen name={routes.DETAILS} component={controler.DetailsStackScreen} options={{headerShown:false,}}/>
+      <Stack.Screen name={routes.SEARCH_RESULTS} component={controler.SearchResultsStackScreen} options={{headerShown:false,}}/> */}
       {/* 
       {/* 
       <Stack.Screen name={routes.SHOPS_CATEGORY} component={controler.ShopsCategoryStackScreen} options={{headerShown:true,headerTitle:"Shops",headerTintColor:theme.dark,headerTitleStyle:{color:theme.dark}}}/>
@@ -39,4 +38,4 @@ const SearchNavigator = ({navigation,route}) =>{
   )
 }
 
- export default SearchNavigator; 
+ export default AccountNavigator; 
