@@ -8,4 +8,8 @@ export default Object.freeze({
   CATEGORY:'Category',
   SEARCH:'Search',
   SEARCH_RESULTS:'Searchresults',
+
+  MAIN_SEARCH_TAB:'MainSearchTab',
+  MAIN_SEARCH:'MainSearch',
+  DETAILS:'Details'
 });

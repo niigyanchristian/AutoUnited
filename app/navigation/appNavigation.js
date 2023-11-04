@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import HomeNavigator from './homeNavigation';
-import { MaterialCommunityIcons,FontAwesome } from '@expo/vector-icons';
+import { MaterialCommunityIcons,FontAwesome,Ionicons } from '@expo/vector-icons';
 
 import routes from './routes';
 import { useTheme } from '../hooks/ThemeContext';
+import SearchNavigator from './searchNavigation';
 const Tab = createBottomTabNavigator();
 const AppNavigator = ({width})=>{
   const {theme}=useTheme();
@@ -21,9 +22,8 @@ return (
           return <FontAwesome name="home" size={24} color="black" />
         }
 
-      else if (route.name === routes.ACCOUNT_TAB) {
-          iconName = focused ? 'account-circle' : 'account-circle-outline';
-          size = focused ? 30: 24;
+      else if (route.name === routes.MAIN_SEARCH_TAB) {
+          return <Ionicons name="md-search-circle" size={24} color="black" />
         }
   
   
@@ -42,6 +42,7 @@ return (
       })}
       >
       <Tab.Screen name={routes.HOME_TAB} component={HomeNavigator} options={{headerShown:false}}/>
+      <Tab.Screen name={routes.MAIN_SEARCH_TAB} component={SearchNavigator} options={{headerShown:false,tabBarLabel:"Search"}}/>
       
     </Tab.Navigator>
     </>

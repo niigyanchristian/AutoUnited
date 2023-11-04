@@ -1,6 +1,8 @@
 import CategoryScreen from "../screens/CategoryScreen"
+import DetailsScreen from "../screens/DetailsScreen"
 import FirstScreen from "../screens/FirstScreen"
 import HomeScreen from "../screens/HomeScreen"
+import MainSearchScreen from "../screens/MainSearchScreen"
 import SearchResultsScreen from "../screens/SearchResultsScreen"
 import SearchScreen from "../screens/SearchScreen"
 
@@ -14,6 +16,9 @@ const CategoryStackScreen = ({ navigation,route })=> <CategoryScreen navigation=
 const SearchStackScreen = ({ navigation,route })=> <SearchScreen navigation={navigation} route={route}/>
 const SearchResultsStackScreen = ({ navigation,route })=> <SearchResultsScreen navigation={navigation} route={route}/>
 
+const MainSearchStackScreen = ({ navigation,route })=> <MainSearchScreen navigation={navigation} route={route}/>
+const DetailsStackScreen = ({ navigation,route })=> <DetailsScreen navigation={navigation} route={route}/>
+
     
     
 export default{
@@ -21,5 +26,7 @@ export default{
   FirstStackScreen,
   CategoryStackScreen,
   SearchStackScreen,
-  SearchResultsStackScreen
+  SearchResultsStackScreen,
+  MainSearchStackScreen,
+  DetailsStackScreen
   }

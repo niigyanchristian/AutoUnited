@@ -4,8 +4,8 @@ const lightTheme = Object.freeze({
     black: "#000",
     dark:'#333',
     mediumDark:'#535353ce',
-    primary:'#ff512f',
-    secondary:'#dd2476',
+    primary:'#310A0B',
+    secondary:'#743A36',
     white: "#fff",
   });
   

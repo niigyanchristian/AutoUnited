@@ -2,6 +2,7 @@ import React from 'react';
 import { View, StyleSheet,ScrollView,TouchableOpacity } from 'react-native';
 import AppText from './AppText';
 import useAuth from '../auth/useAuth';
+import { useTheme } from '../hooks/ThemeContext';
 
 
 const data =[
@@ -13,8 +14,9 @@ const data =[
 ]
 function AppAdvertScrow(props) {
     const {width,height} = useAuth();
+    const {theme} = useTheme();
 return (
-    <View style={{height:height*0.2,backgroundColor:'blue'}}>
+    <View style={{height:height*0.2}}>
     <ScrollView
     horizontal
     shoshowsHorizontalScrollIndicator={false}
@@ -25,7 +27,7 @@ return (
         return(
           <TouchableOpacity 
           key={item._id}
-          style={[styles.scrowCard,{backgroundColor:'orange',width:width*0.7}]}
+          style={[styles.scrowCard,{backgroundColor:theme.white,width:width*0.7}]}
             >
                 <AppText fontFamily={"PoppinsSemiBold"} fontSize={width*0.055}>{item.title}</AppText>
             </TouchableOpacity>
@@ -39,12 +41,19 @@ return (
 export default AppAdvertScrow;
 const styles = StyleSheet.create({
     scrowCard:{
-        backgroundColor:'blue',
         margin:5,
         marginRight:10,
         // height:100,
         borderRadius:10,
         justifyContent:'center',
-        alignItems:'center'
+        alignItems:'center',
+        elevation:5,
+        shadowOffset:{
+          width:1,
+          height:1
+        },
+        shadowColor:'#333',
+        shadowOpacity:0.9,
+        shadowRadius:2,
 }
 });
