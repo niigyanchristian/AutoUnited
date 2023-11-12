@@ -20,9 +20,9 @@ return (
             <Image style={{width:'100%',height:'50%',alignSelf:'center'}} source={item.img}/>
             <View style={{padding:'3%'}}>
 
-            <AppText color={theme.white}>{item.shopName}</AppText>
-            <AppText color={theme.white} numberOfLines={2} fontSize={width*0.035}>{item.discription}</AppText>
-            <AppText color={theme.white} fontSize={width*0.045} fontFamily={"PoppinsSemiBold"}>GH₵ {item.price}</AppText>
+            <AppText color={theme.secondary=='#fff'?theme.dark:theme.white}>{item.shopName}</AppText>
+            <AppText color={theme.secondary=='#fff'?theme.dark:theme.white} numberOfLines={2} fontSize={width*0.035}>{item.discription}</AppText>
+            <AppText color={theme.secondary=='#fff'?theme.dark:theme.white} fontSize={width*0.045} fontFamily={"PoppinsSemiBold"}>GH₵ {item.price}</AppText>
             <View>
             <Rating rating={item.rate}/>
             </View>

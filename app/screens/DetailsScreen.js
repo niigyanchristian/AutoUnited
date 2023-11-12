@@ -51,6 +51,16 @@ return (
         <View style={{backgroundColor:theme.primary,height:height*0.22,padding:'1.5%'}}>
         <AppFeaturedProductsScrow titleOnly={true}/>
         </View>
+        <View style={{width:width,padding:'3%'}}>
+        <AppText fontSize={width*0.045} fontFamily={"PoppinsSemiBold"}>Delivery Information</AppText>
+        <View>
+            <AppText>Me as a shop this is the delivery policy I have set
+                I will deliver only to Accra
+                This is my return policy
+                You can replace but you wont get your money back.
+                </AppText>
+        </View>
+        </View>
 
         <Reviews/>
 
@@ -86,7 +96,7 @@ return (
         <Modal visible={modal}>
         <ScrollView contentContainerStyle={{padding:'5%'}}>
         <View style={{flexDirection:'row',alignItems:'center',paddingVertical:'3%'}}>
-            <Entypo name="cross" size={width*0.1} color={theme.secondary} onPress={()=>setModal(false)}/>
+            <Entypo name="cross" size={width*0.1} color={theme.primary} onPress={()=>setModal(false)}/>
             <AppText fontSize={width*0.06} fontFamily={"PoppinsSemiBold"}>Product Details</AppText>
            
         </View>

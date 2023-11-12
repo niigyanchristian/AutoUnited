@@ -1,28 +1,38 @@
 import React from 'react';
 import { View, StyleSheet,TouchableOpacity } from 'react-native';
 import { FontAwesome,AntDesign,MaterialCommunityIcons,MaterialIcons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 import useAuth from '../auth/useAuth';
 import { useTheme } from '../hooks/ThemeContext';
 import AppTextInput from './AppTextInput';
+import routes from '../navigation/routes';
 
-function AppHeader({navigation}) {
+function AppHeader() {
     const {width,height} = useAuth();
     const {theme} = useTheme();
+    const navigation = useNavigation();
 return (
 <View style={[styles.header,{backgroundColor:theme.white,width:width,justifyContent:'space-between'}]}>
-<AntDesign name="arrowleft" size={width*0.08} color={theme.primary} />
-    <AppTextInput placeholder={"Search"}/>
+<AntDesign name="arrowleft" size={width*0.08} color={theme.dark} onPress={()=>navigation.goBack()}/>
+    <AppTextInput placeholder={"Search"} padding='1.5%'/>
 <TouchableOpacity 
-// style={{flex:1}}
+style={{marginHorizontal:'1%'}}
 onPress={()=>
     navigation.navigate(routes.HOME_TAB,{
     screen:routes.SEARCH,
     })
     }>
-    <FontAwesome name="search" size={width*0.08} color={theme.primary} />
+    <FontAwesome name="search" size={width*0.07} color={theme.dark} />
 </TouchableOpacity>
-
-    <AntDesign name="shoppingcart" size={width*0.08} color={theme.primary} />
+<TouchableOpacity 
+style={{marginHorizontal:'1%'}}
+onPress={()=>
+    navigation.navigate(routes.HOME_TAB,{
+    screen:routes.SEARCH,
+    })
+    }>
+    <AntDesign name="shoppingcart" size={width*0.08} color={theme.dark} />
+    </TouchableOpacity>
 </View>
 );
 }

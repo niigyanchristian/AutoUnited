@@ -45,10 +45,26 @@ return (
                 )
             })}
         </View>
-        <View style={{width:width*0.75,backgroundColor:'orange',height:500}}>
+        <View style={{width:width*0.75,height:500}}>
                 <AppText>Crowns & Emblems</AppText>
-            <View style={{width:'100%',backgroundColor:'blue'}}>
-                <Card item={datas[1]} />
+            <View style={{width:'100%',borderBottomWidth:1,flexDirection:'row',alignItems:'center',flexWrap:'wrap'}}>
+                <Card item={datas[1]} titleOnly={true} XScale={0.69}/>
+                <Card item={datas[1]} titleOnly={true} XScale={0.69}/>
+                <Card item={datas[1]} titleOnly={true} XScale={0.69}/>
+            </View>
+                <AppText>Lubricants & Additives</AppText>
+            <View style={{width:'100%',borderBottomWidth:1,flexDirection:'row',alignItems:'center',flexWrap:'wrap'}}>
+            <Card item={datas[1]} titleOnly={true} XScale={0.69}/>
+                <Card item={datas[1]} titleOnly={true} XScale={0.69}/>
+                <Card item={datas[1]} titleOnly={true} XScale={0.69}/>
+                <Card item={datas[1]} titleOnly={true} XScale={0.69}/>
+            </View>
+                <AppText>Tools & Equipment</AppText>
+            <View style={{width:'100%',borderBottomWidth:1,flexDirection:'row',alignItems:'center',flexWrap:'wrap'}}>
+            <Card item={datas[1]} titleOnly={true} XScale={0.69}/>
+                <Card item={datas[1]} titleOnly={true} XScale={0.69}/>
+                <Card item={datas[1]} titleOnly={true} XScale={0.69}/>
+                <Card item={datas[1]} titleOnly={true} XScale={0.69}/>
             </View>
         </View>
     </View>

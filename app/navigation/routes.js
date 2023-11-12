@@ -14,7 +14,8 @@ export default Object.freeze({
 
   MAIN_SEARCH_TAB:'MainSearchTab',
   MAIN_SEARCH:'MainSearch',
-  DETAILS:'Details'
+  DETAILS:'Details',
+  CART:'Cart'
 
 
 

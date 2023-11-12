@@ -17,7 +17,7 @@ function AppFeaturedProductsScrow({YScale=1,XScale=1,TextSize=1,titleOnly=false,
 return (
     <ScrollView
     horizontal
-    shoshowsHorizontalScrollIndicator={false}
+    showsHorizontalScrollIndicator={false}
     contentContainerStyle={{marginVertical:'2%'}}>
       {data.map(item=>{    
         return(

@@ -70,7 +70,7 @@ if (!fontsLoaded) return null;
       {/* <OfflineNotice/> */}
      <NavigationContainer onReady={onNavigationContainerReady}>
       <AppStatusBar/>
-      {user ? <AppNavigator width={width}/>: <AuthNavigator/>}
+      {!user ? <AppNavigator width={width}/>: <AuthNavigator/>}
      </NavigationContainer>
      <OfflineNotice/>
      </ThemeProvider>

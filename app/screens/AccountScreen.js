@@ -1,11 +1,14 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Button } from 'react-native';
 import AppText from '../components/AppText';
+import { useTheme } from '../hooks/ThemeContext';
 
 function AccountScreen(props) {
+    const  {toggleTheme}= useTheme();
 return (
 <View style={styles.container}>
     <AppText>Account</AppText>
+    <Button onPress={toggleTheme} title='Toggle'/>
 </View>
 );
 }

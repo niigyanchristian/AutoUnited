@@ -33,15 +33,15 @@ onPress={()=>setModal(true)}>
     <Modal visible={modal}>
         <View style={{padding:'5%'}}>
         <View style={{flexDirection:'row',alignItems:'center',justifyContent:'space-between',paddingVertical:'3%'}}>
-            <Entypo name="cross" size={width*0.1} color={theme.secondary} onPress={()=>setModal(false)}/>
+            <Entypo name="cross" size={width*0.1} color={theme.primary} onPress={()=>setModal(false)}/>
             <AppText fontSize={width*0.06} fontFamily={"PoppinsSemiBold"}>Filters</AppText>
-            <AppText fontSize={width*0.05} fontFamily={"PoppinsSemiBold"} color={theme.secondary}>Clear All</AppText>
+            <AppText fontSize={width*0.05} fontFamily={"PoppinsSemiBold"} color={theme.primary}>Clear All</AppText>
         </View>
 
         <AppText fontFamily={"PoppinsSemiBold"} fontSize={width*0.055}>Category</AppText>
         <View style={{flexDirection:'row',flexWrap:'wrap'}}>
             {data.map((item)=>(
-                <View key={item.id} style={{ paddingHorizontal:'5%',padding:'2%',margin:'2%',borderRadius:20,backgroundColor:theme.secondary}}>
+                <View key={item.id} style={{ paddingHorizontal:'5%',padding:'2%',margin:'2%',borderRadius:20,backgroundColor:theme.primary}}>
                 <AppText color={theme.white}>{item.title}</AppText>
                 </View>
             ))}
@@ -49,11 +49,11 @@ onPress={()=>setModal(true)}>
         <AppText fontFamily={"PoppinsSemiBold"} fontSize={width*0.055}>Distance</AppText>
         <AppText fontFamily={"PoppinsSemiBold"} fontSize={width*0.055}>Price</AppText>
         <View style={{flexDirection:'row',width:'100%',justifyContent:'space-between'}}>
-            <View style={{backgroundColor:theme.secondary,padding:'2%',borderRadius:10,flexDirection:'row',alignItems:'center',width:'47%'}}>
+            <View style={{backgroundColor:theme.primary,padding:'2%',borderRadius:10,flexDirection:'row',alignItems:'center',width:'47%'}}>
                 <AppText color={theme.white}>GH₵</AppText>
                 <TextInput placeholder='Min|' placeholderTextColor={theme.white} style={[styles.textInputBox,{fontSize:width*0.04,color:theme.dark,}]}/>
             </View>
-            <View style={{backgroundColor:theme.secondary,padding:'2%',borderRadius:10,flexDirection:'row',alignItems:'center',width:'47%'}}>
+            <View style={{backgroundColor:theme.primary,padding:'2%',borderRadius:10,flexDirection:'row',alignItems:'center',width:'47%'}}>
                 <AppText color={theme.white}>GH₵</AppText>
                 <TextInput placeholder='Max|' placeholderTextColor={theme.white} style={[styles.textInputBox,{fontSize:width*0.04,color:theme.dark}]}/>
             </View>
@@ -63,8 +63,8 @@ onPress={()=>setModal(true)}>
         <Rating rating={4}/>
         <AppText fontFamily={"PoppinsSemiBold"} fontSize={width*0.055}>Delivery Options</AppText>
 
-        <View style={[styles.mybutton,{backgroundColor:theme.white,shadowColor: theme.primary,borderColor:theme.secondary}]}>
-            <AppText fontFamily={"PoppinsSemiBold"} fontSize={width*0.055}>Show results</AppText>
+        <View style={[styles.mybutton,{backgroundColor:theme.primary,shadowColor: theme.primary}]}>
+            <AppText fontFamily={"PoppinsSemiBold"} color={theme.white} fontSize={width*0.055}>Show results</AppText>
         </View>
     </View>
     </Modal>
@@ -86,7 +86,6 @@ mybutton:{
     shadowOffset: { width: 0, height: 2 }, // Shadow offset (x, y) for iOS
     shadowOpacity: 0.5,      // Shadow opacity for iOS
     shadowRadius: 2,         // Shadow radius for iOS
-    elevation: 5,
-    borderWidth:2  
+    elevation: 5, 
 }
 });

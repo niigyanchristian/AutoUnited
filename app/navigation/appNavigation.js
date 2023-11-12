@@ -23,15 +23,15 @@ return (
         if (route.name === routes.HOME_TAB) {
           // iconName = focused ? 'home-circle' : 'home-circle-outline';
           // size = focused ? 30: 24;
-          return <Ionicons name={focused?"ios-home":"ios-home-outline"} size={width*0.08} color={focused?theme.white:theme.secondary} />
+          return <Ionicons name={focused?"ios-home":"ios-home-outline"} size={width*0.08} color={theme.primary} />
         }
 
       else if (route.name === routes.MAIN_SEARCH_TAB) {
-          return <Ionicons name={focused?"md-search-circle":"md-search-circle-outline"} size={width*0.08} color={focused?theme.white:theme.secondary} />
+          return <Ionicons name={focused?"md-search-circle":"md-search-circle-outline"} size={width*0.08} color={theme.primary} />
         }
       else if (route.name === routes.ACCOUNT_TAB) {
 
-          return  <MaterialCommunityIcons name={focused?"account-circle":"account-circle-outline"} size={width*0.08} color={focused?theme.white:theme.secondary} />
+          return  <MaterialCommunityIcons name={focused?"account-circle":"account-circle-outline"} size={width*0.08} color={theme.primary} />
         }
   
   
@@ -41,12 +41,10 @@ return (
         );
       },
       // tabBarShowLabel:false,
-      tabBarActiveTintColor: theme.white=='#fff'?theme.white:theme.secondary,
-      tabBarInactiveTintColor: theme.white=='#fff'?theme.secondary:'#aaa',
-      // tabBarHideOnKeyboard:true,
-      // pressColor: 'gray',
-      tabBarInactiveBackgroundColor:theme.primary,
-      tabBarActiveBackgroundColor:theme.primary,
+      tabBarActiveTintColor: theme.primary,
+      tabBarInactiveTintColor: theme.primary,
+      // tabBarInactiveBackgroundColor:theme.secondary,
+      // tabBarActiveBackgroundColor:theme.secondary,
       })}
       >
       <Tab.Screen name={routes.HOME_TAB} component={HomeNavigator} options={{headerShown:false,tabBarLabel:"Home"}}/>

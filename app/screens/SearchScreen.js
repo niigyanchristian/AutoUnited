@@ -23,7 +23,7 @@ return (
         <TextInput placeholder='search' style={{flex:1}}/>
         <TouchableOpacity style={{backgroundColor:theme.primary,width:width*0.2,alignItems:"center",borderRadius:20,padding:'1%'}}
         
-        onPress={()=>navigation.navigate(routes.HOME_TAB,{
+        onPress={()=>navigation.navigate(routes.MAIN_SEARCH_TAB,{
             screen:routes.SEARCH_RESULTS,
             })}
         ><FontAwesome name="search" size={width*0.07} color="#fff" /></TouchableOpacity>
@@ -65,7 +65,7 @@ return (
     <View style={{flexDirection:'row',flexWrap:'wrap'}}>
         {data.map((item)=>(
             <View key={item.id} style={{ paddingHorizontal:'5%',padding:'2%',margin:'2%',borderRadius:20,backgroundColor:theme.secondary}}>
-            <AppText color={theme.white}>{item.title}</AppText>
+            <AppText>{item.title}</AppText>
             </View>
         ))}
     </View>

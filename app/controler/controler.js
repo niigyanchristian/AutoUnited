@@ -1,4 +1,5 @@
 import AccountScreen from "../screens/AccountScreen"
+import CartScreen from "../screens/CartScreen"
 import CategoryScreen from "../screens/CategoryScreen"
 import DetailsScreen from "../screens/DetailsScreen"
 import FirstScreen from "../screens/FirstScreen"
@@ -6,6 +7,7 @@ import HomeScreen from "../screens/HomeScreen"
 import MainSearchScreen from "../screens/MainSearchScreen"
 import SearchResultsScreen from "../screens/SearchResultsScreen"
 import SearchScreen from "../screens/SearchScreen"
+// import SearchScreen from "../../SearchScreen"
 import SignInScreen from "../screens/SignInScreen"
 import SignUpScreen from "../screens/SignUpScreen"
 
@@ -16,6 +18,7 @@ const FirstStackScreen = ({ navigation })=> <FirstScreen navigation={navigation}
 
 const HomeStackScreen = ({ navigation,route })=> <HomeScreen navigation={navigation} route={route}/>
 const CategoryStackScreen = ({ navigation,route })=> <CategoryScreen navigation={navigation} route={route}/>
+const CartStackScreen = ({ navigation,route })=> <CartScreen navigation={navigation} route={route}/>
 const SearchStackScreen = ({ navigation,route })=> <SearchScreen navigation={navigation} route={route}/>
 const SearchResultsStackScreen = ({ navigation,route })=> <SearchResultsScreen navigation={navigation} route={route}/>
 
@@ -37,5 +40,6 @@ export default{
   MainSearchStackScreen,
   DetailsStackScreen,
   SignInStackScreen,
-  SignUpStackScreen
+  SignUpStackScreen,
+  CartStackScreen
   }

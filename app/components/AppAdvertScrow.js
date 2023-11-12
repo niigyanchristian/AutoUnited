@@ -19,7 +19,7 @@ return (
     <View style={{height:height*0.2}}>
     <ScrollView
     horizontal
-    shoshowsHorizontalScrollIndicator={false}
+    showsHorizontalScrollIndicator={false}
     contentContainerStyle={{marginVertical:'2%'}}
     >
       {data.map(item=>{

@@ -13,11 +13,11 @@ function SearchButton({ onPress }) {
   const {theme}=useTheme();
   const isFocused = useIsFocused();
   return (
-    <Pressable onPress={onPress} style={{height:150,position:'relative',backgroundColor:theme.primary}}>
-      <View style={[styles.container,{height:width*0.15,width:width*0.15,borderColor:theme.primary}]}>
+    <Pressable onPress={onPress} style={{height:150,position:'relative',backgroundColor:theme.secondary}}>
+      <View style={[styles.container,{height:width*0.15,width:width*0.15,borderColor:theme.primary,backgroundColor:!isFocused?theme.white:theme.primary}]}>
         <MaterialIcons name="shopping-cart" size={30} color={isFocused?theme.white:theme.primary} />
       </View>
-      <AppText top='-13%' textAlign='center' color={isFocused?theme.white:theme.secondary} fontSize={width*0.03}>Search</AppText>
+      <AppText top='-13%' textAlign='center' color={theme.primary} fontSize={width*0.03}>Search</AppText>
     </Pressable>
   );
 }
@@ -25,7 +25,6 @@ function SearchButton({ onPress }) {
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
-    backgroundColor: lightTheme.secondary,
     borderRadius: 40,
     borderWidth:5,
     bottom: 20,

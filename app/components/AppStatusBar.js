@@ -7,12 +7,15 @@ import Constants from 'expo-constants';
 function AppStatusBar(props) {
     const {theme}=useTheme();
     const {width,height}=useAuth();
+    console.log('====================================');
+    console.log(theme);
+    console.log('====================================');
 
     if(Platform.OS=='ios'){
         return (
-        <View style={{backgroundColor:theme.white=='#fff'?theme.dark:theme.white,height:Constants.statusBarHeight}}>
+        <View style={{backgroundColor:theme.primary=='#44a0e3'?theme.dark:theme.white,height:Constants.statusBarHeight}}>
                 <StatusBar
-                    backgroundColor={theme.white=='#fff'?theme.dark:theme.white}
+                    backgroundColor={theme.primary=='#44a0e3'?theme.dark:theme.white}
                     barStyle={"light-content"} //"dark-content"
                   />
               </View>
@@ -20,7 +23,7 @@ function AppStatusBar(props) {
     }else{
         return (
         <StatusBar
-        backgroundColor={theme.white=='#fff'?'#d19b98':theme.white}// Change to your desired background color
+        backgroundColor={theme.primary}// Change to your desired background color
         barStyle={"light-content"} // Change to "dark-content" for dark text
       />
         )
