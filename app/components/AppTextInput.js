@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, StyleSheet,TextInput,Text } from 'react-native';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
 import useAuth from '../auth/useAuth';
 import { useTheme } from '../hooks/ThemeContext';
 
@@ -10,7 +9,23 @@ function AppTextInput({placeholder,padding='2%',borderRadius=50,textContentType,
     const {theme}=useTheme();
 return (
     <>
-    <View style={[styles.container,{backgroundColor:theme.secondary,padding:padding,borderRadius:borderRadius,marginHorizontal:'1%',flex:1,...others}]}>
+    <View style={{borderWidth:2,borderColor:theme.primary,borderRadius:10,padding:'2%',paddingHorizontal:'5%'}}>
+            <TextInput
+                placeholder={placeholder}
+                textContentType={textContentType}
+                onChangeText={onChangeText}
+                onBlur={onBlur}
+                value={value}
+                style={{color:theme.dark,fontFamily:"PoppinsSemiBold",fontSize:width*0.04}}
+                secureTextEntry={secureTextEntry}
+                keyboardType={keyboardType}
+                multiline={multiline}
+                maxLength={maxLength}
+                placeholderTextColor={theme.white}
+                onFocus={onFocus}/>
+        </View>
+        {touched && errors&&<Text style={{color:'red',marginHorizontal:'5%'}}>{touched && errors}</Text> }
+    {/* <View style={[styles.container,{backgroundColor:theme.secondary,padding:padding,borderRadius:borderRadius,marginHorizontal:'1%',flex:1,...others}]}>
     <TextInput          
                 placeholder={placeholder}
                 textContentType={textContentType}
@@ -25,7 +40,7 @@ return (
                 placeholderTextColor={theme.white}
                 onFocus={onFocus}
                 />
-    </View>
+    </View> */}
         {/* <View style={[styles.container,{padding:padding,borderRadius:borderRadius,backgroundColor:theme.white=='#fff'?theme.primary:theme.white,...others}]}>
             <TextInput          
                 placeholder={placeholder}
@@ -42,8 +57,8 @@ return (
                 onFocus={onFocus}
                 />
         </View>
-        <Text style={{color:'red',marginHorizontal:'5%'}}>{touched && errors}</Text> 
-        */}
+    */}
+    
     </>
 );
 }

@@ -6,10 +6,10 @@ import authStorage from "./storage";
 export default useAuth = () => {
   const { user, setUser,width,shops,setShops,height,shopImage,setShopImage,orders,setOrders,serviceData,setServiceData,modal,setModal } = useContext(AuthContext);
 
-  const logIn = (authToken) => {
-    const user = jwtDecode(authToken);
-    setUser(user.found);
-    authStorage.storeToken(authToken);
+  const logIn = (user_login) => {
+    // const user = jwtDecode(authToken);
+    setUser(user_login);
+    authStorage.storeToken(user_login);
   };
 
   const logOut = () => {

@@ -24,7 +24,7 @@ function MainSearchScreen({navigation}) {
 
     
 return (
-<View style={[styles.container,{height:height}]}>
+<View style={[styles.container,{height:height,backgroundColor:theme.secondary}]}>
     {/* Parts */}
     <View style={[styles.header,{width:width,backgroundColor:theme.white}]}>
 <TouchableOpacity 
@@ -62,8 +62,8 @@ onPress={()=>
     <AppAdvertScrow/>
     
     {/* Featured Products */}
-    <View style={{backgroundColor:theme.primary,height:height*0.29,padding:'1.5%'}}>
-        <AppText fontFamily={"PoppinsSemiBold"} fontSize={width*0.055} marginLeft='2%' color={theme.white}>Featured Products</AppText>
+    <View style={{height:height*0.29,padding:'1.5%'}}>
+        <AppText fontFamily={"PoppinsSemiBold"} fontSize={width*0.055} marginLeft='2%' >Featured Products</AppText>
         <AppFeaturedProductsScrow/>
     </View>
     

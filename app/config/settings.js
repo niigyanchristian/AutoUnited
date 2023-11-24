@@ -3,7 +3,7 @@ import Constants from "expo-constants";
 const settings = {
   dev: {
     // apiUrl: "http://192.168.43.7:3000/api",
-    apiUrl: "https://barbershop-k337.onrender.com/api",
+    apiUrl: "https://autounited.azurewebsites.net/api/v1/",
   },
   staging: {
     apiUrl: "https://barbershop-k337.onrender.com/api",

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import AppText from '../components/AppText';
 import { FontAwesome,MaterialIcons } from '@expo/vector-icons';
@@ -17,6 +17,9 @@ const data = [
 function SearchScreen({navigation}) {
     const {width}=useAuth();
     const {theme} = useTheme();
+    const [value,setValue]=useState('');
+
+    console.log(value)
 return (
 <View style={styles.container}>
     <View style={{flexDirection:'row',width:width*0.9,padding:'0.5%',margin:'2%',borderRadius:20,paddingLeft:'5%',alignSelf:'center',borderWidth:1,borderColor:theme.primary}}>
@@ -29,14 +32,20 @@ return (
         ><FontAwesome name="search" size={width*0.07} color="#fff" /></TouchableOpacity>
     </View>
 
-    <View style={{flexDirection:'row',alignItems:'center'}}>
+    <TouchableOpacity style={{flexDirection:'row',alignItems:'center'}}
+        onPress={()=>setValue('toyota')}
+    >
         <View style={{width:width*0.04,height:width*0.04,borderRadius:width*0.03,borderWidth:1,borderColor:theme.primary,marginRight:'3%',backgroundColor:theme.primary}}></View>
         <AppText>My Toyota</AppText>
-    </View>
-    <View style={{flexDirection:'row',alignItems:'center'}}>
+    </TouchableOpacity>
+
+    <TouchableOpacity style={{flexDirection:'row',alignItems:'center'}}
+        onPress={()=>setValue('royce')}
+    >
         <View style={{width:width*0.04,height:width*0.04,borderRadius:width*0.03,borderWidth:1,borderColor:theme.primary,marginRight:'3%'}}></View>
         <AppText>My Royce</AppText>
-    </View>
+    </TouchableOpacity>
+    
     <View style={{flexDirection:'row',alignItems:'center'}}>
         <View style={{width:width*0.04,height:width*0.04,borderRadius:width*0.03,borderWidth:1,marginRight:'3%'}}></View>
         <AppText>Other</AppText>

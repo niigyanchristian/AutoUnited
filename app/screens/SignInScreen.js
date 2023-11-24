@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { View, StyleSheet, ImageBackground, TextInput } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
 import * as Animatable from 'react-native-animatable';
+import {Formik} from 'formik';
+import * as yup from 'yup';
+import authApi from '../api/auth';
 
 import AppText from '../components/AppText';
 import useAuth from '../auth/useAuth';
@@ -9,11 +12,44 @@ import { useTheme } from '../hooks/ThemeContext';
 import AppTextInput from '../components/AppTextInput';
 import AppButton from '../components/AppButton';
 import routes from '../navigation/routes';
+import AppPasswordInput from '../components/AppPasswordInput';
+
+
+const ReviewSchema = yup.object({
+    username: yup.string().min(2).label("Name").required(),
+    // phoneNumber: yup.number().min(10).label("Contact").required(),
+    user_password: yup.string().min(6).label("Password").required()
+  })
+
 
 function SignInScreen({navigation}) {
-    const {width,height}=useAuth();
+    const {width,height,logIn}=useAuth();
     const {theme}=useTheme();
-    const [view,setView]=useState(false);
+    const [active,setActive]=useState(false);
+
+
+    const handleSubmit = async (values) => {
+    
+        let data = {
+            username: values.username.trim(),
+            user_phone: values.user_phone.trim(),
+            user_password: values.user_password.trim()
+        }
+        
+    
+        const result = await authApi.login(data);
+    
+        if (!result.ok) {
+            setActive(false)
+            return;
+        } else {
+            setActive(false)
+            logIn(result.data.results)
+        }
+    };
+    
+    
+    
 return (
 <ImageBackground style={styles.container} 
 source={require('../assets/imgs/pic2.png')}>
@@ -21,26 +57,47 @@ source={require('../assets/imgs/pic2.png')}>
         <AppText fontFamily={"PoppinsSemiBold"} fontSize={width*0.1} color={theme.white}>Welcome</AppText>
         <AppText fontFamily={"PoppinsSemiBold"} fontSize={width*0.04} color={theme.white}>Sign in to continue</AppText>
     </View>
-    <Animatable.View animation="fadeInUp" duration={2000} delay={500} style={{backgroundColor:theme.white,width:width,height:height*0.53,padding:'5%'}}>
-        <AppText fontFamily={"PoppinsSemiBold"} fontSize={width*0.055} color={theme.primary}>Email address</AppText>
-        <View style={{borderWidth:2,borderColor:theme.primary,borderRadius:10,padding:'2%',paddingHorizontal:'5%',marginBottom:'5%'}}>
-            <TextInput placeholder='' style={{color:theme.primary,fontFamily:"PoppinsSemiBold"}}/>
-        </View>
-
-        <AppText fontFamily={"PoppinsSemiBold"} fontSize={width*0.055} color={theme.primary}>Password</AppText>
-        <View style={{borderWidth:2,borderColor:theme.primary,borderRadius:10,padding:'2%',paddingHorizontal:'5%',flexDirection:'row',alignItems:'center',marginBottom:'5%'}}>
-            <TextInput secureTextEntry={view} style={{color:theme.primary,flex:1,fontFamily:"PoppinsSemiBold"}}/>
-            {view&&<Entypo name="eye" size={width*0.07} color={theme.primary} onPress={()=>setView(false)}/>}
-            {!view&&<Entypo name="eye-with-line" size={width*0.07} color={theme.primary} onPress={()=>setView(true)}/>}
-        </View>  
+    <Formik
+          initialValues={{username:"",user_phone:"",user_password:""}}
+          validationSchema={ReviewSchema}
+          onSubmit={async (values,actions)=>{
+            setActive(true)
+            handleSubmit(values)
         
-        <AppButton text={'Login'} alignSelf='center'/>
+        }}
+          >
+            {(props)=>(
+    <Animatable.View animation="fadeInUp" duration={2000} delay={500} style={{backgroundColor:theme.white,width:width,height:height*0.53,padding:'5%'}}>
+
+        
+        <AppText fontFamily={"PoppinsSemiBold"} fontSize={width*0.055} color={theme.primary}>Username</AppText>
+        <AppTextInput 
+        onChangeText={props.handleChange('username')}
+        onBlur={props.handleBlur('username')}
+        value={props.values.username}
+        touched={props.touched.username}
+        errors={props.errors.username}/>
+
+        <AppText fontFamily={"PoppinsSemiBold"} fontSize={width*0.055} color={theme.primary} marginTop='5%'>Password</AppText>
+        
+        
+        <AppPasswordInput
+        onChangeText={props.handleChange('user_password')}
+        onBlur={props.handleBlur('user_password')}
+        value={props.values.user_password}
+        touched={props.touched.user_password}
+        errors={props.errors.user_password}
+        />
+        <AppButton text={'Login'} alignSelf='center' backgroundColor={theme.primary} textColor={theme.secondary}
+        active={active}
+        onPress={props.handleSubmit} marginTop='5%'/>
       
         <View style={{flexDirection:'row',alignItems:'center',justifyContent:'space-between',marginTop:'5%'}}>
         <AppText textDecorationLine='underline' color={theme.primary} fontFamily={"PoppinsSemiBold"} fontSize={width*0.045} onPress={()=>navigation.navigate(routes.SIGN_UP)}>Sign up</AppText>
         <AppText textDecorationLine='underline' color={theme.primary} fontFamily={"PoppinsSemiBold"} fontSize={width*0.045}>Forgot Password</AppText>
-        </View>      
+        </View>  
     </Animatable.View>
+             )}</Formik>
 </ImageBackground>
 );
 }

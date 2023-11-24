@@ -19,13 +19,12 @@ const data = [
     {id:4,company:'Shell',petrol:'13.58',diesel:'16.28',loc:'3'},
 ]
 function HomeScreen({navigation}) {
-    const {width,height} = useAuth();
+    const {width,height,logOut} = useAuth();
     const {theme} =useTheme();
     const [view,setView] =useState(false);
 
-    
 return (
-<View style={[styles.container,{height:height}]}>
+<View style={[styles.container,{height:height,backgroundColor:'#fae6e2'}]}>
     {/* Parts */}
     <View style={[styles.header,{width:width}]}>
         <AppText fontFamily={"PoppinsSemiBold"} fontSize={width*0.055}>AutoUnited</AppText>
