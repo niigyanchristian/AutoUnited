@@ -24,8 +24,12 @@ export default function App() {
 
   const NetInfo = useNetInfo();
   let [fontsLoaded] = useFonts({
-    "PoppinsRegular":require('./app/assets/fonts/Poppins-Regular.ttf'),
-    "PoppinsSemiBold":require('./app/assets/fonts/Poppins-SemiBold.ttf'),
+    // "PoppinsRegular":require('./app/assets/fonts/Poppins-Regular.ttf'),
+    // "PoppinsSemiBold":require('./app/assets/fonts/Poppins-SemiBold.ttf'),
+    'NunitoMedium': require('./app/assets/fonts/Nunito-Medium.ttf'),
+    'NunitoSemiBold': require('./app/assets/fonts/Nunito-SemiBold.ttf'),
+    'NunitoExtraBold': require('./app/assets/fonts/Nunito-ExtraBold.ttf'),
+    'NunitoBold': require('./app/assets/fonts/Nunito-Bold.ttf'),
   });
 
   
@@ -33,9 +37,9 @@ export default function App() {
 
 
   const restoreToken = async ()=>{
-   const token = await authStorage.getToken();
+    const token = await authStorage.getToken();
     if(!token) return;
-    setUser(jwtDecode(token).found);
+    setUser(JSON.parse(token));
   }
   useEffect(() => {
     async function prepare() {
@@ -43,7 +47,7 @@ export default function App() {
             await SplashScreen.preventAutoHideAsync();
             await restoreToken();
         } catch (error) {
-            // console.log("Error loading app", error);
+            console.log("Error loading app", error);
         } finally {
             setIsReady(true);
         }

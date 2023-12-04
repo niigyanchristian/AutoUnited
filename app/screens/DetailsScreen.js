@@ -18,41 +18,41 @@ const data = [
     {id:1,shopName:'Shop 1',discription:'Toyota Camry Slightly Used Suspension Rods …',price:'20.00',img:require('../assets/imgs/male_13.jpg'),rate:4.5},
     {id:2,shopName:'Shop 2',discription:'Toyota Camry Slightly Used Suspension Rods …',price:'20.00',img:require('../assets/imgs/male_13.jpg'),rate:5},
     {id:3,shopName:'Shop 3',discription:'Toyota Camry Slightly Used Suspension Rods …',price:'20.00',img:require('../assets/imgs/male_13.jpg'),rate:2.5},
-    {id:4,shopName:'Shop 4',discription:'Toyota Camry Slightly Used Suspension Rods …',price:'20.00',img:require('../assets/imgs/male_13.jpg'),rate:4},
-    {id:5,shopName:'Shop 3',discription:'Toyota Camry Slightly Used Suspension Rods …',price:'20.00',img:require('../assets/imgs/male_13.jpg'),rate:4.5},
-    {id:6,shopName:'Shop 4',discription:'Toyota Camry Slightly Used Suspension Rods …',price:'20.00',img:require('../assets/imgs/male_13.jpg'),rate:3},
 ]
 
-function DetailsScreen({navigation}) {
+function DetailsScreen({navigation,route}) {
+    const {part} = route.params;
     const {width,height}= useAuth();
     const {theme}=useTheme();
     const [modal,setModal]=useState(false)
+
+    console.log("======nppppp>",part)
 return (
 <View style={styles.container}>
-    <AppHeader/>
+    <AppHeader Component={<AppText fontSize={width*0.045} fontFamily={"NunitoExtraBold"}>Component Details</AppText>}/>
     <ScrollView>
     <ScrowImages/>
     <View style={{paddingBottom:0,width:width,padding:'3%',}}>
-        <AppText>Toyota Camry Slightly Used Suspension Rods with major hydraulics</AppText>
-        <AppText fontSize={width*0.045} fontFamily={"PoppinsSemiBold"}>GH₵30.00</AppText>
+        <AppText>{part.part_name}</AppText>
+        <AppText fontSize={width*0.045} fontFamily={"NunitoSemiBold"}>GH₵{part.part_price}</AppText>
         <AppText color='#bbb'>In stock</AppText>
         <AppText>Delivery Available in Accra</AppText>
         <View style={{flexDirection:'row',alignItems:'baseline'}}>
-        <Rating rating={4.5}/>
-        <AppText>{`(32) reviews`}</AppText>
+        <Rating rating={part.part_rating}/>
+        <AppText>{`(${part.part_rating}) reviews`}</AppText>
         </View>
         <TouchableOpacity style={{width:'100%',flexDirection:'row',justifyContent:'space-between',alignItems:'center',marginVertical:'2%'}}
         onPress={()=>setModal(true)}>
-        <AppText fontSize={width*0.045} fontFamily={"PoppinsSemiBold"}>Specificaion & Description</AppText>
+        <AppText fontSize={width*0.045} fontFamily={"NunitoSemiBold"}>Specificaion & Description</AppText>
         <MaterialIcons name="arrow-forward-ios" size={24} color="black" />
         </TouchableOpacity>
-        <AppText fontSize={width*0.045} fontFamily={"PoppinsSemiBold"}>Variants</AppText>
+        <AppText fontSize={width*0.045} fontFamily={"NunitoSemiBold"}>Variants</AppText>
     </View>
         <View style={{backgroundColor:theme.primary,height:height*0.22,padding:'1.5%'}}>
         <AppFeaturedProductsScrow titleOnly={true}/>
         </View>
         <View style={{width:width,padding:'3%'}}>
-        <AppText fontSize={width*0.045} fontFamily={"PoppinsSemiBold"}>Delivery Information</AppText>
+        <AppText fontSize={width*0.045} fontFamily={"NunitoSemiBold"}>Delivery Information</AppText>
         <View>
             <AppText>Me as a shop this is the delivery policy I have set
                 I will deliver only to Accra
@@ -69,7 +69,7 @@ return (
             <Image style={{width:'100%',height:'100%'}} source={require('../assets/imgs/male_13.jpg')}/>
             </View>
             <View>
-                <AppText color={theme.white} fontFamily={"PoppinsSemiBold"}>Abose Okae Store 2</AppText>
+                <AppText color={theme.white} fontFamily={"NunitoSemiBold"}>Abose Okae Store 2</AppText>
                 <AppText color={theme.white}>95% Positive Feedback</AppText>
                 <AppText color={theme.white}>234 Followers</AppText>
                 <View style={{flexDirection:'row',width:width*0.5,justifyContent:'space-between'}}>
@@ -81,15 +81,15 @@ return (
 
         </View>
             {/* <View> */}
-                <AppText fontSize={width*0.045} fontFamily={"PoppinsSemiBold"} marginLeft='3%'>Similar</AppText>
+                <AppText fontSize={width*0.045} fontFamily={"NunitoSemiBold"} marginLeft='3%'>Similar</AppText>
                 <View style={{width:width,}}>
-                    <Similar navigation={navigation}/>
+                    <Similar navigation={navigation} part={part}/>
                 </View>
                 
             {/* </View> */}
-            <View  style={{flexDirection:'row',width:width,justifyContent:'space-between',alignItems:'center'}}>
-                <AppButton text={'Call'} width={width*0.46}/>
-                <AppButton text={'Add to cart'} width={width*0.46}/>
+            <View  style={{flexDirection:'row',width:width*0.9,justifyContent:'space-between',alignItems:'center',alignSelf:'center'}}>
+                <AppButton text={'Call'} width={width*0.4}/>
+                <AppButton text={'Add to cart'} width={width*0.4}/>
             </View>
         </ScrollView>
 
@@ -97,7 +97,7 @@ return (
         <ScrollView contentContainerStyle={{padding:'5%'}}>
         <View style={{flexDirection:'row',alignItems:'center',paddingVertical:'3%'}}>
             <Entypo name="cross" size={width*0.1} color={theme.primary} onPress={()=>setModal(false)}/>
-            <AppText fontSize={width*0.06} fontFamily={"PoppinsSemiBold"}>Product Details</AppText>
+            <AppText fontSize={width*0.06} fontFamily={"NunitoSemiBold"}>Product Details</AppText>
            
         </View>
         
@@ -111,10 +111,7 @@ return (
         })}
 
         <View>
-            <AppText>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus commodo orci vel purus cursus, in fermentum felis congue. Aliquam vestibulum, nulla non egestas pharetra, eros sapien luctus nibh, at suscipit ante tellus et eros. Quisque sagittis massa ullamcorper odio egestas viverra. Ut aliquet, enim non rhoncus semper, ante arcu pulvinar erat, et scelerisque felis felis a metus. Suspendisse aliquam, dolor in viverra porta, nunc ante porttitor mauris, id ornare risus nisl sed turpis. Fusce vel iaculis odio. Integer eget tristique sapien. In venenatis ultrices ante a porta. Nunc auctor odio nisi, non rutrum ante faucibus nec. Donec non pharetra dui. Duis elementum erat sit amet metus ornare pulvinar. In tincidunt condimentum lectus a ultricies. 
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus commodo orci vel purus cursus, in fermentum felis congue. Aliquam vestibulum, nulla non egestas pharetra, eros sapien luctus nibh, at suscipit ante tellus et eros. Quisque sagittis massa ullamcorper odio egestas viverra. Ut aliquet, enim non rhoncus semper, ante arcu pulvinar erat, et scelerisque felis felis a metus. Suspendisse aliquam, dolor in viverra porta, nunc ante porttitor mauris, id ornare risus nisl sed turpis. Fusce vel iaculis odio. Integer eget tristique sapien. In venenatis ultrices ante a porta. Nunc auctor odio nisi, non rutrum ante faucibus nec. Donec non pharetra dui. Duis elementum erat sit amet metus ornare pulvinar. In tincidunt condimentum lectus a ultricies. 
-
-</AppText>
+            <AppText>{part.part_description}</AppText>
         </View>
         </ScrollView>
         </Modal>

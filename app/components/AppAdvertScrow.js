@@ -1,59 +1,44 @@
-import React from 'react';
-import { View, StyleSheet,ScrollView,TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { View, StyleSheet,ScrollView,Image,Dimensions } from 'react-native';
 import AppText from './AppText';
+import colors from '../config/colors';
+import { MaterialCommunityIcons,MaterialIcons } from '@expo/vector-icons';
 import useAuth from '../auth/useAuth';
-import { useTheme } from '../hooks/ThemeContext';
 
 
-const data =[
-    {_id:1,title:'Advert1'},
-    {_id:2,title:'Advert2'},
-    {_id:3,title:'Advert3'},
-    {_id:4,title:'Advert4'},
-    {_id:5,title:'Advert5'},
-]
+
+
 function AppAdvertScrow(props) {
-    const {width,height} = useAuth();
-    const {theme} = useTheme();
+  const {width} = useAuth();
+  // const [color,setColor]=useState('')
+
+  const data = [
+    {id:1,title:'Advert 1'},
+    {id:2,title:'Advert 2'},
+    {id:3,title:'Advert 3'},
+    {id:4,title:'Advert 4'},
+  
+  ]
 return (
-    <View style={{height:height*0.2}}>
-    <ScrollView
+<ScrollView 
     horizontal
     showsHorizontalScrollIndicator={false}
-    contentContainerStyle={{marginVertical:'2%'}}
-    >
-      {data.map(item=>{
-        
-        return(
-          <TouchableOpacity 
-          key={item._id}
-          style={[styles.scrowCard,{backgroundColor:theme.white,width:width*0.7}]}
-            >
-                <AppText fontFamily={"PoppinsSemiBold"} fontSize={width*0.055}>{item.title}</AppText>
-            </TouchableOpacity>
-        )})}
-        </ScrollView>
-
-    </View>
+    contentContainerStyle={{gap:30,paddingHorizontal:15}}>
+       {data.map((item)=>(
+        <View key={item.id} style={{backgroundColor:colors.grey,height:width*0.17,width:width*0.5,flexDirection:'row',justifyContent:'center',alignItems:'center',borderRadius:width*0.03,padding:width*0.02,overflow:'hidden',elevation:2,marginBottom:'1%'}}>
+          {/* {item.Icon} */}
+         <AppText fontFamily='NunitoExtraBold' color={colors.dark}>{item.title}</AppText>
+        </View>
+       ))}        
+    </ScrollView>
 );
 }
 
 export default AppAdvertScrow;
 const styles = StyleSheet.create({
-    scrowCard:{
-        margin:5,
-        marginRight:10,
-        // height:100,
-        borderRadius:10,
-        justifyContent:'center',
-        alignItems:'center',
-        elevation:5,
-        shadowOffset:{
-          width:1,
-          height:1
-        },
-        shadowColor:'#333',
-        shadowOpacity:0.9,
-        shadowRadius:2,
+container:{
+// flex:1,
+// justifyContent:'center',
+//  alignItems:'center'
 }
 });

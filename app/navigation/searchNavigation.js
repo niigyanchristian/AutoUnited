@@ -27,7 +27,7 @@ const SearchNavigator = ({navigation,route}) =>{
     }}>
       <Stack.Screen name={routes.MAIN_SEARCH} component={controler.MainSearchStackScreen} options={{headerShown:false}}/>
       <Stack.Screen name={routes.CATEGORY} component={controler.CategoryStackScreen} options={{headerShown:false}}/>
-      <Stack.Screen name={routes.SEARCH} component={controler.SearchStackScreen} options={{headerShown:false}}/>
+      <Stack.Screen name={routes.SEARCH} component={controler.SearchStackScreen} options={{headerShown:true,headerTitle:'Search'}}/>
       <Stack.Screen name={routes.SEARCH_RESULTS} component={controler.SearchResultsStackScreen} options={{headerShown:false,}}/>
       <Stack.Screen name={routes.DETAILS} component={controler.DetailsStackScreen} options={{headerShown:false,}}/>
       <Stack.Screen name={routes.CART} component={controler.CartStackScreen} options={{headerShown:true,}}/>

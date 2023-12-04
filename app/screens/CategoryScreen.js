@@ -5,6 +5,9 @@ import AppHeader from '../components/AppHeader';
 import useAuth from '../auth/useAuth';
 import { useTheme } from '../hooks/ThemeContext';
 import Card from '../components/Card';
+import AppPicker from '../components/AppPicker';
+import colors from '../config/colors';
+import AppScrowCard from '../components/AppScrowCard';
 
 
 const data = [
@@ -31,43 +34,27 @@ function CategoryScreen(props) {
     const {width,height}=useAuth();
     const {theme}=useTheme();
     const [selected,setSelected]=useState(0);
+    const [selectedItem,onSelectedItem]=useState(data[0]);
+    console.log(data[0])
 return (
 <View style={styles.container}>
-    <AppHeader/>
-    <View style={{flexDirection:'row'}}>
-        <View style={{width:width*0.25,backgroundColor:theme.secondary,height:height,padding:'2%'}}>
-            {data.map((item,index)=>{
-                return(
-                    <TouchableOpacity key={item.id}
-                    style={{backgroundColor:index==selected?theme.white:theme.secondary,borderBottomWidth:1,}}
-                    onPress={()=>setSelected(index)}
-                    ><AppText>{item.title}</AppText></TouchableOpacity>
-                )
-            })}
-        </View>
-        <View style={{width:width*0.75,height:500}}>
-                <AppText>Crowns & Emblems</AppText>
-            <View style={{width:'100%',borderBottomWidth:1,flexDirection:'row',alignItems:'center',flexWrap:'wrap'}}>
-                <Card item={datas[1]} titleOnly={true} XScale={0.69}/>
-                <Card item={datas[1]} titleOnly={true} XScale={0.69}/>
-                <Card item={datas[1]} titleOnly={true} XScale={0.69}/>
+    <AppHeader Component={<AppPicker items={data} selectedItem={selectedItem}  onSelectedItem={onSelectedItem} width={width*0.5}/>}/>
+        <View style={{width:width}}>
+                <AppText fontFamily='NunitoSemiBold' marginLeft='3%' fontSize={width*0.05}>Crowns & Emblems</AppText>
+            <View style={[styles.wapper,{height:height*0.17}]}>
+            <AppScrowCard toggleBgColor={false} />
+                
             </View>
-                <AppText>Lubricants & Additives</AppText>
-            <View style={{width:'100%',borderBottomWidth:1,flexDirection:'row',alignItems:'center',flexWrap:'wrap'}}>
-            <Card item={datas[1]} titleOnly={true} XScale={0.69}/>
-                <Card item={datas[1]} titleOnly={true} XScale={0.69}/>
-                <Card item={datas[1]} titleOnly={true} XScale={0.69}/>
-                <Card item={datas[1]} titleOnly={true} XScale={0.69}/>
+            
+            <AppText fontFamily='NunitoSemiBold' marginLeft='3%' fontSize={width*0.05}>Lubricants & Additives</AppText>
+            <View style={[styles.wapper,{height:height*0.17}]}>
+            <AppScrowCard toggleBgColor={true} />
             </View>
-                <AppText>Tools & Equipment</AppText>
-            <View style={{width:'100%',borderBottomWidth:1,flexDirection:'row',alignItems:'center',flexWrap:'wrap'}}>
-            <Card item={datas[1]} titleOnly={true} XScale={0.69}/>
-                <Card item={datas[1]} titleOnly={true} XScale={0.69}/>
-                <Card item={datas[1]} titleOnly={true} XScale={0.69}/>
-                <Card item={datas[1]} titleOnly={true} XScale={0.69}/>
+                <AppText fontFamily='NunitoSemiBold' marginLeft='3%' fontSize={width*0.05}>Tools & Equipment</AppText>
+            <View style={[styles.wapper,{height:height*0.17}]}>
+            <AppScrowCard />
             </View>
         </View>
-    </View>
 </View>
 );
 }
@@ -77,6 +64,17 @@ const styles = StyleSheet.create({
 container:{
 flex:1,
 // justifyContent:'center',
+backgroundColor:colors.primary,
  alignItems:'center'
+},
+wapper:{
+    width:'100%',
+    borderBottomWidth:1,
+    borderStyle:'dashed',
+    borderColor:colors.secondary,
+    marginVertical:'2%',
+    flexDirection:'row',
+    alignItems:'center',
+    // paddingVertical:'3%'
 }
 });

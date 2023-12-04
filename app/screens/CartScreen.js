@@ -40,10 +40,10 @@ return (
             <Image style={{width:'100%',height:'100%'}} source={item.img}/>
             </View>
             <View style={{width:width*0.72,padding:'2%',paddingLeft:'1%'}}>
-                <AppText width={'95%'} fontFamily={"PoppinsSemiBold"}>{item.discription}</AppText>
+                <AppText width={'95%'} fontFamily={"NunitoSemiBold"}>{item.discription}</AppText>
                 
                 <AppText width={'95%'} numberOfLines={2} fontSize={width*0.035}>Seller: Shop 1</AppText>
-                <AppText fontFamily={"PoppinsSemiBold"} >GH₵ {item.price}</AppText>       
+                <AppText fontFamily={"NunitoSemiBold"} >GH₵ {item.price}</AppText>       
             </View>
             </View>
             <View style={{width:'95%',flexDirection:'row',justifyContent:'space-between'}}>
@@ -56,7 +56,7 @@ return (
                 <TouchableOpacity
                 onPress={()=>{setCount(count-1)}}
                 style={[styles.box,{width:width*0.1,height:width*0.08}]}><Entypo name="minus" size={24} color={theme.primary} /></TouchableOpacity>
-                <View style={[styles.box,{width:width*0.1,height:width*0.08}]}><AppText fontFamily={"PoppinsSemiBold"} color={theme.primary}>{count}</AppText></View>
+                <View style={[styles.box,{width:width*0.1,height:width*0.08}]}><AppText fontFamily={"NunitoSemiBold"} color={theme.primary}>{count}</AppText></View>
                 <TouchableOpacity
                 onPress={()=>setCount(count+1)}
                 style={[styles.box,{width:width*0.1,height:width*0.08,backgroundColor:theme.primary}]}><Entypo name="plus" size={24} color={theme.white} /></TouchableOpacity>

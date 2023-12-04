@@ -9,6 +9,7 @@ import SearchNavigator from './searchNavigation';
 import AccountNavigator from './accountNavigation';
 import useAuth from '../auth/useAuth';
 import SearchButton from './SearchButton';
+import CarsNavigator from './carsNavigation';
 const Tab = createBottomTabNavigator();
 const AppNavigator = ()=>{
   const {theme}=useTheme();
@@ -16,18 +17,17 @@ const AppNavigator = ()=>{
 return (
   <>
     <Tab.Navigator
-    // barStyle={{backgroundColor: '#694fad', }}
     screenOptions={({ route }) => ({
       tabBarIcon: ({ focused, color, size }) => {
         let iconName;
         if (route.name === routes.HOME_TAB) {
-          // iconName = focused ? 'home-circle' : 'home-circle-outline';
-          // size = focused ? 30: 24;
           return <Ionicons name={focused?"ios-home":"ios-home-outline"} size={width*0.08} color={theme.primary} />
         }
-
       else if (route.name === routes.MAIN_SEARCH_TAB) {
-          return <Ionicons name={focused?"md-search-circle":"md-search-circle-outline"} size={width*0.08} color={theme.primary} />
+          return <Ionicons name={focused?"md-search-circle":"md-search-circle-outline"} size={width*0.095} color={theme.primary} />
+        }
+      else if (route.name === routes.CARS_TAB) {
+          return <Ionicons name={focused?"md-car-sport":"md-car-sport-outline"} size={width*0.09} color={theme.primary} />
         }
       else if (route.name === routes.ACCOUNT_TAB) {
 
@@ -48,23 +48,8 @@ return (
       })}
       >
       <Tab.Screen name={routes.HOME_TAB} component={HomeNavigator} options={{headerShown:false,tabBarLabel:"Home"}}/>
-      <Tab.Screen
-        name={routes.MAIN_SEARCH_TAB}
-        component={SearchNavigator}
-        options={({ navigation }) => ({
-          tabBarButton: () => (
-            <SearchButton
-              onPress={() => {
-                navigation.navigate(routes.MAIN_SEARCH_TAB, {
-                  screen: routes.MAIN_SEARCH, // Navigate to the first screen of the tab
-                });
-              }}
-            />
-          ),
-          headerShown:false
-        })}
-      />
-
+      <Tab.Screen name={routes.MAIN_SEARCH_TAB} component={SearchNavigator} options={{headerShown:false,tabBarLabel:"Search"}}/>
+      <Tab.Screen name={routes.CARS_TAB} component={CarsNavigator} options={{headerShown:false,tabBarLabel:"Cars"}}/>
       <Tab.Screen name={routes.ACCOUNT_TAB} component={AccountNavigator} options={{headerShown:false,tabBarLabel:"Account"}}/>
       
     </Tab.Navigator>

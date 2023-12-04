@@ -51,11 +51,11 @@ function SignUpScreen({navigation}) {
     };
 return (
     <ImageBackground style={styles.container} 
-source={require('../assets/imgs/pic2.png')}>
+source={require('../assets/imgs/splash.png')}>
     <ScrollView style={{flex:1}}>
     <View style={{height:height*0.25,width:width,justifyContent:'flex-end',alignItems:'flex-start',padding:'5%'}}>
-        <AppText fontFamily={"PoppinsSemiBold"} fontSize={width*0.1} color={theme.white}>Welcome</AppText>
-        <AppText fontFamily={"PoppinsSemiBold"} fontSize={width*0.04} color={theme.white}>Register to continue</AppText>
+        <AppText fontFamily={"NunitoSemiBold"} fontSize={width*0.1} color={theme.white}>Welcome</AppText>
+        <AppText fontFamily={"NunitoSemiBold"} fontSize={width*0.04} color={theme.white}>Register to continue</AppText>
     </View>
     <Formik
           initialValues={{username:"",user_phone:"",user_password:""}}
@@ -67,7 +67,7 @@ source={require('../assets/imgs/pic2.png')}>
         >
         {(props)=>(
             <Animatable.View animation="fadeInUp" duration={2000} delay={500} style={{backgroundColor:theme.white,width:width,height:height*0.6,padding:'5%',marginTop:height*0.15}}>
-            <AppText fontFamily={"PoppinsSemiBold"} fontSize={width*0.05} color={theme.primary}>Username</AppText>
+            <AppText fontFamily={"NunitoSemiBold"} fontSize={width*0.05} color={theme.primary}>Username</AppText>
             <AppTextInput 
             onChangeText={props.handleChange('username')}
             onBlur={props.handleBlur('username')}
@@ -75,7 +75,7 @@ source={require('../assets/imgs/pic2.png')}>
             touched={props.touched.username}
             errors={props.errors.username}/>
         
-        <AppText fontFamily={"PoppinsSemiBold"} fontSize={width*0.05} color={theme.primary} marginTop='5%'>Phone Number</AppText>
+        <AppText fontFamily={"NunitoSemiBold"} fontSize={width*0.05} color={theme.primary} marginTop='5%'>Phone Number</AppText>
         <AppTextInput 
             onChangeText={props.handleChange('user_phone')}
             onBlur={props.handleBlur('user_phone')}
@@ -84,7 +84,7 @@ source={require('../assets/imgs/pic2.png')}>
             touched={props.touched.user_phone}
             errors={props.errors.user_phone}/>
 
-        <AppText fontFamily={"PoppinsSemiBold"} fontSize={width*0.055} color={theme.primary} marginTop='5%'>Password</AppText>
+        <AppText fontFamily={"NunitoSemiBold"} fontSize={width*0.055} color={theme.primary} marginTop='5%'>Password</AppText>
         
         
         <AppPasswordInput
@@ -101,8 +101,8 @@ source={require('../assets/imgs/pic2.png')}>
         
       
         <View style={{flexDirection:'row',alignItems:'center',justifyContent:'space-between',marginTop:'5%'}}>
-        <AppText textDecorationLine='underline' color={theme.primary} fontFamily={"PoppinsSemiBold"} fontSize={width*0.045} onPress={()=>navigation.navigate(routes.SIGN_IN)}>Sign In</AppText>
-        <AppText textDecorationLine='underline' color={theme.primary} fontFamily={"PoppinsSemiBold"} fontSize={width*0.045}>Forgot Password</AppText>
+        <AppText textDecorationLine='underline' color={theme.primary} fontFamily={"NunitoSemiBold"} fontSize={width*0.045} onPress={()=>navigation.navigate(routes.SIGN_IN)}>Sign In</AppText>
+        <AppText textDecorationLine='underline' color={theme.primary} fontFamily={"NunitoSemiBold"} fontSize={width*0.045}>Forgot Password</AppText>
         </View>      
     </Animatable.View>
 

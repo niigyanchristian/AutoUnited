@@ -2,6 +2,7 @@ import React from 'react';
 import { View, StyleSheet,TextInput,Text } from 'react-native';
 import useAuth from '../auth/useAuth';
 import { useTheme } from '../hooks/ThemeContext';
+import colors from '../config/colors';
 
 function AppTextInput({placeholder,padding='2%',borderRadius=50,textContentType,onChangeText,onBlur,value,touched,errors,secureTextEntry=false,keyboardType='default',multiline=false,maxLength,onFocus,...others}) {
 
@@ -9,19 +10,19 @@ function AppTextInput({placeholder,padding='2%',borderRadius=50,textContentType,
     const {theme}=useTheme();
 return (
     <>
-    <View style={{borderWidth:2,borderColor:theme.primary,borderRadius:10,padding:'2%',paddingHorizontal:'5%'}}>
+    <View style={{borderWidth:2,borderColor:theme.primary,borderRadius:10,padding:'2%',paddingHorizontal:'5%',marginBottom:'3%',...others}}>
             <TextInput
                 placeholder={placeholder}
                 textContentType={textContentType}
                 onChangeText={onChangeText}
                 onBlur={onBlur}
                 value={value}
-                style={{color:theme.dark,fontFamily:"PoppinsSemiBold",fontSize:width*0.04}}
+                style={{color:colors.dark,fontFamily:"NunitoSemiBold",fontSize:width*0.04}}
                 secureTextEntry={secureTextEntry}
                 keyboardType={keyboardType}
                 multiline={multiline}
                 maxLength={maxLength}
-                placeholderTextColor={theme.white}
+                placeholderTextColor={'#bbb'}
                 onFocus={onFocus}/>
         </View>
         {touched && errors&&<Text style={{color:'red',marginHorizontal:'5%'}}>{touched && errors}</Text> }
@@ -69,7 +70,7 @@ container:{
     
     width:'100%', 
     flexDirection:'row',
-    alignItems:'center'
+    alignItems:'center',
 },
     textInputBox:{
         flex:1,

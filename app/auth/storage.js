@@ -1,12 +1,15 @@
 import * as SecureStore from 'expo-secure-store';
 
-const key = "authToken";
+const key = "onedon";
 
 const storeToken =async authToken => {
     try{
-       await SecureStore.setItemAsync(key,authToken);
+        console.log('=storeToken============');
+        console.log(authToken);
+        console.log('====================================');
+       await SecureStore.setItemAsync(key,JSON.stringify(authToken[0]));
    }catch(error){
-    // console.log("Error storing the auth token",error);
+    console.log("Error storing the auth token",error);
    }
 }
 

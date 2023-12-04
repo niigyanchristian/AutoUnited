@@ -24,7 +24,7 @@ return (
 <TouchableOpacity style={{flexDirection:'row',alignItems:'center'}}
 onPress={()=>setModal(true)}>
     <AntDesign name="filter" size={width*0.08} color={theme.primary} />
-    <AppText fontSize={width*0.045} fontFamily={"PoppinsSemiBold"}>Filters</AppText>
+    <AppText fontSize={width*0.045} fontFamily={"NunitoSemiBold"}>Filters</AppText>
 </TouchableOpacity>
 
 
@@ -34,11 +34,11 @@ onPress={()=>setModal(true)}>
         <View style={{padding:'5%'}}>
         <View style={{flexDirection:'row',alignItems:'center',justifyContent:'space-between',paddingVertical:'3%'}}>
             <Entypo name="cross" size={width*0.1} color={theme.primary} onPress={()=>setModal(false)}/>
-            <AppText fontSize={width*0.06} fontFamily={"PoppinsSemiBold"}>Filters</AppText>
-            <AppText fontSize={width*0.05} fontFamily={"PoppinsSemiBold"} color={theme.primary}>Clear All</AppText>
+            <AppText fontSize={width*0.06} fontFamily={"NunitoSemiBold"}>Filters</AppText>
+            <AppText fontSize={width*0.05} fontFamily={"NunitoSemiBold"} color={theme.primary}>Clear All</AppText>
         </View>
 
-        <AppText fontFamily={"PoppinsSemiBold"} fontSize={width*0.055}>Category</AppText>
+        <AppText fontFamily={"NunitoSemiBold"} fontSize={width*0.055}>Category</AppText>
         <View style={{flexDirection:'row',flexWrap:'wrap'}}>
             {data.map((item)=>(
                 <View key={item.id} style={{ paddingHorizontal:'5%',padding:'2%',margin:'2%',borderRadius:20,backgroundColor:theme.primary}}>
@@ -46,8 +46,8 @@ onPress={()=>setModal(true)}>
                 </View>
             ))}
         </View>
-        <AppText fontFamily={"PoppinsSemiBold"} fontSize={width*0.055}>Distance</AppText>
-        <AppText fontFamily={"PoppinsSemiBold"} fontSize={width*0.055}>Price</AppText>
+        <AppText fontFamily={"NunitoSemiBold"} fontSize={width*0.055}>Distance</AppText>
+        <AppText fontFamily={"NunitoSemiBold"} fontSize={width*0.055}>Price</AppText>
         <View style={{flexDirection:'row',width:'100%',justifyContent:'space-between'}}>
             <View style={{backgroundColor:theme.primary,padding:'2%',borderRadius:10,flexDirection:'row',alignItems:'center',width:'47%'}}>
                 <AppText color={theme.white}>GH₵</AppText>
@@ -59,12 +59,12 @@ onPress={()=>setModal(true)}>
             </View>
         </View>
 
-        <AppText fontFamily={"PoppinsSemiBold"} fontSize={width*0.055}>Rating</AppText>
+        <AppText fontFamily={"NunitoSemiBold"} fontSize={width*0.055}>Rating</AppText>
         <Rating rating={4}/>
-        <AppText fontFamily={"PoppinsSemiBold"} fontSize={width*0.055}>Delivery Options</AppText>
+        <AppText fontFamily={"NunitoSemiBold"} fontSize={width*0.055}>Delivery Options</AppText>
 
         <View style={[styles.mybutton,{backgroundColor:theme.primary,shadowColor: theme.primary}]}>
-            <AppText fontFamily={"PoppinsSemiBold"} color={theme.white} fontSize={width*0.055}>Show results</AppText>
+            <AppText fontFamily={"NunitoSemiBold"} color={theme.white} fontSize={width*0.055}>Show results</AppText>
         </View>
     </View>
     </Modal>

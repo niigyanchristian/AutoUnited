@@ -3,6 +3,7 @@ import { View, StyleSheet,StatusBar,Platform } from 'react-native';
 import { useTheme } from '../hooks/ThemeContext';
 import useAuth from '../auth/useAuth';
 import Constants from 'expo-constants';
+import colors from '../config/colors';
 
 function AppStatusBar(props) {
     const {theme}=useTheme();
@@ -23,7 +24,7 @@ function AppStatusBar(props) {
     }else{
         return (
         <StatusBar
-        backgroundColor={theme.primary}// Change to your desired background color
+        backgroundColor={colors.secondary}// Change to your desired background color
         barStyle={"light-content"} // Change to "dark-content" for dark text
       />
         )

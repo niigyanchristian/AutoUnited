@@ -6,7 +6,7 @@ function AppText({numberOfLines,ellipsizeMode,children,onPress,disabled=false,..
     const {width}=useAuth();
     const {theme}=useTheme()
 return (
-<Text disabled={disabled} onPress={onPress} numberOfLines={numberOfLines} ellipsizeMode={ellipsizeMode} style={[{fontSize:width*0.04,color:theme.dark,textAlign:'left',fontFamily: "PoppinsRegular",...others}]}>{children}</Text>
+<Text disabled={disabled} onPress={onPress} numberOfLines={numberOfLines} ellipsizeMode={ellipsizeMode} style={[{fontSize:width*0.04,color:theme.dark,textAlign:'left',fontFamily: "NunitoSemiBold",...others}]}>{children}</Text>
 );
 }
 

@@ -1,7 +1,8 @@
 
 import React, { useState } from 'react';
-import { View, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, ScrollView, TouchableOpacity,Image } from 'react-native';
 import { FontAwesome,AntDesign,MaterialCommunityIcons,MaterialIcons } from '@expo/vector-icons';
+import Constants from 'expo-constants';
 
 
 import AppText from '../components/AppText';
@@ -10,6 +11,9 @@ import AppAdvertScrow from '../components/AppAdvertScrow';
 import AppFeaturedProductsScrow from '../components/AppFeaturedProductsScrow';
 import routes from '../navigation/routes';
 import { useTheme } from '../hooks/ThemeContext';
+import colors from '../config/colors';
+import AppScrowCard from '../components/AppScrowCard';
+import ListsOfProjects from '../components/listsOfProjects';
 
 const data = [
     {id:1,company:'Shell',petrol:'13.58',diesel:'16.28',loc:'0'},
@@ -17,6 +21,14 @@ const data = [
     {id:3,company:'Goil',petrol:'13.58',diesel:'16.28',loc:'2'},
     {id:4,company:'Shell',petrol:'13.58',diesel:'16.28',loc:'3'},
 ]
+
+const data2 = [
+    {id:1},
+    {id:2},
+    {id:3},
+    {id:4},
+    {id:5},
+  ]
 function MainSearchScreen({navigation}) {
     const {width,height} = useAuth();
     const {theme} =useTheme();
@@ -24,18 +36,18 @@ function MainSearchScreen({navigation}) {
 
     
 return (
-<View style={[styles.container,{height:height,backgroundColor:theme.secondary}]}>
+<View style={[styles.container,{height:height,backgroundColor:colors.primary}]}>
     {/* Parts */}
     <View style={[styles.header,{width:width,backgroundColor:theme.white}]}>
-<TouchableOpacity 
-// style={{flex:1}}
-onPress={()=>
-    navigation.navigate(routes.MAIN_SEARCH_TAB,{
-    screen:routes.SEARCH,
-    })
-    }>
-    <FontAwesome name="search" size={width*0.07} color={theme.dark} />
-</TouchableOpacity>
+        <TouchableOpacity 
+        // style={{flex:1}}
+        onPress={()=>
+            navigation.navigate(routes.MAIN_SEARCH_TAB,{
+            screen:routes.SEARCH,
+            })
+            }>
+            <FontAwesome name="search" size={width*0.07} color={theme.dark} />
+        </TouchableOpacity>
 
 <TouchableOpacity 
 onPress={()=>
@@ -43,8 +55,8 @@ onPress={()=>
     screen:routes.CATEGORY,
     })
     }
-    style={{backgroundColor:theme.primary,padding:'1%',alignSelf:'flex-end',paddingHorizontal:'2%',borderRadius:15}}>
-    <AppText color={theme.white} fontFamily={"PoppinsSemiBold"}>Category</AppText>
+    style={{backgroundColor:colors.grey,alignSelf:'flex-end',borderRadius:15, width:width*0.4,height:height*0.05,justifyContent:'center',alignItems:'center'}}>
+    <AppText fontSize={width*0.05} fontFamily={"NunitoExtraBold"}>Category</AppText>
 
 </TouchableOpacity>
 <TouchableOpacity 
@@ -58,22 +70,15 @@ onPress={()=>
     
     </View>
 
-    <ScrollView style={{flex:1}}>
+    <ScrollView style={{flex:1,paddingTop:'5%'}} contentContainerStyle={{alignItems:'center',paddingBottom:'5%'}}>
     <AppAdvertScrow/>
     
     {/* Featured Products */}
-    <View style={{height:height*0.29,padding:'1.5%'}}>
-        <AppText fontFamily={"PoppinsSemiBold"} fontSize={width*0.055} marginLeft='2%' >Featured Products</AppText>
-        <AppFeaturedProductsScrow/>
+    <View style={{width:width*0.98,padding:'1.5%'}}>
+        <AppText fontFamily={"NunitoExtraBold"} fontSize={width*0.055} marginLeft='2%' >Featured Products</AppText>
+        {/* <AppFeaturedProductsScrow/> */}
     </View>
-    
-    <View style={{height:200}}>
-        <AppFeaturedProductsScrow TextSize={1.1} YScale={1.5} XScale={1.4}/>
-    </View>
-
-
-
-   
+    <ListsOfProjects/>
     </ScrollView>
 </View>
 );

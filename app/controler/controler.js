@@ -1,7 +1,9 @@
 import AccountScreen from "../screens/AccountScreen"
+import CarsScreen from "../screens/CarsScreen"
 import CartScreen from "../screens/CartScreen"
 import CategoryScreen from "../screens/CategoryScreen"
 import DetailsScreen from "../screens/DetailsScreen"
+import FillProfileScreen from "../screens/FillProfileScreen"
 import FirstScreen from "../screens/FirstScreen"
 import HomeScreen from "../screens/HomeScreen"
 import MainSearchScreen from "../screens/MainSearchScreen"
@@ -27,6 +29,8 @@ const DetailsStackScreen = ({ navigation,route })=> <DetailsScreen navigation={n
 const AccountStackScreen = ({ navigation,route })=> <AccountScreen navigation={navigation} route={route}/>
 const SignInStackScreen = ({ navigation,route })=> <SignInScreen navigation={navigation} route={route}/>
 const SignUpStackScreen = ({ navigation,route })=> <SignUpScreen navigation={navigation} route={route}/>
+const FillProfileStackScreen = ({ navigation,route })=> <FillProfileScreen navigation={navigation} route={route}/>
+const CarsStackScreen = ({ navigation,route })=> <CarsScreen navigation={navigation} route={route}/>
 
     
     
@@ -41,5 +45,7 @@ export default{
   DetailsStackScreen,
   SignInStackScreen,
   SignUpStackScreen,
-  CartStackScreen
+  CartStackScreen,
+  FillProfileStackScreen,
+  CarsStackScreen
   }

@@ -7,6 +7,7 @@ export default Object.freeze({
   HOME:'home',
   ACCOUNT_TAB:'AccountTab',
   ACCOUNT:'Account',
+  FILL_PROFILE: 'FillProfile',
 
   CATEGORY:'Category',
   SEARCH:'Search',
@@ -15,7 +16,11 @@ export default Object.freeze({
   MAIN_SEARCH_TAB:'MainSearchTab',
   MAIN_SEARCH:'MainSearch',
   DETAILS:'Details',
-  CART:'Cart'
+  CART:'Cart',
+
+
+  CARS_TAB:'CarsTab',
+  CARS:'Cars'
 
 
 

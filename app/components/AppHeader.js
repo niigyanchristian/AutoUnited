@@ -7,32 +7,37 @@ import { useTheme } from '../hooks/ThemeContext';
 import AppTextInput from './AppTextInput';
 import routes from '../navigation/routes';
 
-function AppHeader() {
+function AppHeader({Component}) {
     const {width,height} = useAuth();
     const {theme} = useTheme();
     const navigation = useNavigation();
 return (
-<View style={[styles.header,{backgroundColor:theme.white,width:width,justifyContent:'space-between'}]}>
+<View style={[styles.header,{backgroundColor:theme.white,width:width,height:height*0.07,justifyContent:'space-between'}]}>
 <AntDesign name="arrowleft" size={width*0.08} color={theme.dark} onPress={()=>navigation.goBack()}/>
-    <AppTextInput placeholder={"Search"} padding='1.5%'/>
-<TouchableOpacity 
-style={{marginHorizontal:'1%'}}
-onPress={()=>
-    navigation.navigate(routes.HOME_TAB,{
-    screen:routes.SEARCH,
-    })
-    }>
-    <FontAwesome name="search" size={width*0.07} color={theme.dark} />
-</TouchableOpacity>
-<TouchableOpacity 
-style={{marginHorizontal:'1%'}}
-onPress={()=>
-    navigation.navigate(routes.HOME_TAB,{
-    screen:routes.SEARCH,
-    })
-    }>
-    <AntDesign name="shoppingcart" size={width*0.08} color={theme.dark} />
-    </TouchableOpacity>
+    {Component}
+    {/* <View style={{flexDirection:'row',alignItems:'center'}}> */}
+    {/* <AppTextInput placeholder={"Search"} width={width*0.4} padding='1.5%'/> */}
+
+    {/* <TouchableOpacity 
+    style={{marginHorizontal:'1%'}}
+    onPress={()=>
+        navigation.navigate(routes.HOME_TAB,{
+        screen:routes.SEARCH,
+        })
+        }>
+        <FontAwesome name="search" size={width*0.07} color={theme.dark} />
+    </TouchableOpacity> */}
+    {/* </View> */}
+    
+    <TouchableOpacity 
+    style={{marginHorizontal:'1%'}}
+    onPress={()=>
+        navigation.navigate(routes.MAIN_SEARCH_TAB,{
+        screen:routes.CART,
+        })
+        }>
+        <AntDesign name="shoppingcart" size={width*0.08} color={theme.dark} />
+        </TouchableOpacity>
 </View>
 );
 }

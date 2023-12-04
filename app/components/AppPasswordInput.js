@@ -18,7 +18,7 @@ return (
                 value={value}
                 touched={touched}
                 errors={errors}            
-            style={{color:theme.dark,flex:1,fontFamily:"PoppinsSemiBold"}}/>
+            style={{color:theme.dark,flex:1,fontFamily:"NunitoSemiBold"}}/>
             {view&&<Entypo name="eye" size={width*0.07} color={theme.primary} onPress={()=>setView(false)}/>}
             {!view&&<Entypo name="eye-with-line" size={width*0.07} color={theme.primary} onPress={()=>setView(true)}/>}
         </View> 
