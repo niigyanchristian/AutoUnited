@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { View, StyleSheet, ScrollView, TouchableOpacity,Image } from 'react-native';
+import { View, StyleSheet, ScrollView, TouchableOpacity,Image, Platform } from 'react-native';
 import { FontAwesome,AntDesign,MaterialCommunityIcons,MaterialIcons } from '@expo/vector-icons';
 import Constants from 'expo-constants';
 
@@ -97,11 +97,11 @@ subContainer:{
     // backgroundColor:theme.primary,
 },
 header:{
-    shadowColor: '#000',     // Shadow color for iOS
+    shadowColor: colors.secondary,     // Shadow color for iOS
     shadowOffset: { width: 0, height: 2 }, // Shadow offset (x, y) for iOS
     shadowOpacity: 0.5,      // Shadow opacity for iOS
     shadowRadius: 2,         // Shadow radius for iOS
-    elevation: 5,            // Elevation for Android (controls shadow)
+    elevation:(Platform.OS='android')?5:null,            // Elevation for Android (controls shadow)
     padding:'5%',
     paddingVertical:'3%',
     flexDirection:'row',

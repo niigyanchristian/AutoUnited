@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, TouchableOpacity, Modal, FlatList,Image } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, Modal, FlatList,Image, Platform } from 'react-native';
 import AppText from './AppText';
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { MaterialIcons } from '@expo/vector-icons';
@@ -60,7 +60,7 @@ return (
                               onSelectedItem(item)
                               setModal(false)
                               }}
-                          style={{marginVertical:width*0.05,marginHorizontal:width*0.05,alignSelf:'center',borderBottomWidth:1,borderStyle:'dotted',borderBottomColor:colors.secondary}}>
+                          style={{marginVertical:width*0.05,marginHorizontal:width*0.05,alignSelf:'center',borderBottomWidth:1,borderStyle:(Platform.OS='ios')?'solid':'dashed',borderBottomColor:colors.secondary}}>
                                {/* <Image source={item.imageUri} style={{width:width*0.28,height:width*0.28,borderRadius:width*0.28,}}/> */}
                                <AppText textAlign="center" children={item.title}/>
                           </TouchableOpacity>

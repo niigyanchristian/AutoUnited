@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, ImageBackground, TextInput } from 'react-native';
-import { Entypo } from '@expo/vector-icons';
+import { View, StyleSheet, Image,ScrollView  } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import {Formik} from 'formik';
 import * as yup from 'yup';
@@ -13,6 +12,7 @@ import AppTextInput from '../components/AppTextInput';
 import AppButton from '../components/AppButton';
 import routes from '../navigation/routes';
 import AppPasswordInput from '../components/AppPasswordInput';
+import colors from '../config/colors';
 
 
 const ReviewSchema = yup.object({
@@ -51,11 +51,19 @@ function SignInScreen({navigation}) {
     
     
 return (
-<ImageBackground style={styles.container} 
-source={require('../assets/imgs/splash.png')}>
-    <View style={{height:height*0.25,width:width,justifyContent:'flex-end',alignItems:'flex-start',padding:'5%'}}>
+<View style={styles.container} 
+// source={require('../assets/imgs/splash.png')}
+>
+<ScrollView style={{flex:1}}>
+    <View style={{height:height*0.4,width:width,justifyContent:'flex-end',alignItems:'flex-start',padding:'5%'}}>
+        <View style={{width:width*0.6,height:width*0.25,alignSelf:'center',alignItems:'center',justifyContent:'center',overflow:'hidden',marginBottom:'5%'}}>
+        <Image source={require('../assets/imgs/logo6.png')} style={{width:width*0.7,height:width*0.7,}}/>
+
+        </View>
         <AppText fontFamily={"NunitoSemiBold"} fontSize={width*0.1} color={theme.white}>Welcome</AppText>
         <AppText fontFamily={"NunitoSemiBold"} fontSize={width*0.04} color={theme.white}>Sign in to continue</AppText>
+
+        
     </View>
     <Formik
           initialValues={{username:"",user_phone:"",user_password:""}}
@@ -67,7 +75,7 @@ source={require('../assets/imgs/splash.png')}>
         }}
           >
             {(props)=>(
-    <Animatable.View animation="fadeInUp" duration={2000} delay={500} style={{backgroundColor:theme.white,width:width,height:height*0.53,padding:'5%'}}>
+    <Animatable.View animation="fadeInUp" duration={2000} delay={500} style={{backgroundColor:theme.white,width:width,height:height*0.53,marginTop:height*0.07,padding:'5%'}}>
 
         
         <AppText fontFamily={"NunitoSemiBold"} fontSize={width*0.055} color={theme.primary}>Username</AppText>
@@ -98,7 +106,8 @@ source={require('../assets/imgs/splash.png')}>
         </View>  
     </Animatable.View>
              )}</Formik>
-</ImageBackground>
+             </ScrollView>
+</View>
 );
 }
 
@@ -107,6 +116,7 @@ const styles = StyleSheet.create({
 container:{
 flex:1,
 justifyContent:'space-between',
- alignItems:'center'
+ alignItems:'center',
+ backgroundColor:colors.secondary
 }
 });

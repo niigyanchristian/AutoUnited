@@ -18,9 +18,6 @@ import useApi from '../hooks/useApi';
 function FillProfileScreen(props) {
     const widths = Dimensions.get('window').width;
     const {width,user,logIn}=useAuth();
-// console.log('====================================');
-console.log(user);
-// console.log('====================================');
     const [modalOpen,setModalOpen]= useState(false);
     const [active,setActive]= useState(false);
     const updateUserProfileApi = useApi(usersApi.updateUserProfile);
@@ -46,9 +43,8 @@ console.log(user);
           setActive(false)
           return;
       } else {
-          logIn(result.data.results)
-          console.log(result.data)
-          setActive(false)
+          logIn(result.data.results);
+          setActive(false);
       }
   };
   

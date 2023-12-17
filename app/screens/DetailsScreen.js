@@ -25,8 +25,6 @@ function DetailsScreen({navigation,route}) {
     const {width,height}= useAuth();
     const {theme}=useTheme();
     const [modal,setModal]=useState(false)
-
-    console.log("======nppppp>",part)
 return (
 <View style={styles.container}>
     <AppHeader Component={<AppText fontSize={width*0.045} fontFamily={"NunitoExtraBold"}>Component Details</AppText>}/>

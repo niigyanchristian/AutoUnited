@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, ImageBackground, TextInput, ScrollView } from 'react-native';
+import { View, StyleSheet, Image, TextInput, ScrollView } from 'react-native';
 import {Formik} from 'formik';
 import * as yup from 'yup';
 import { Entypo } from '@expo/vector-icons';
@@ -14,6 +14,7 @@ import AppButton from '../components/AppButton';
 import routes from '../navigation/routes';
 import AppPasswordInput from '../components/AppPasswordInput';
 import useApi from '../hooks/useApi';
+import colors from '../config/colors';
 
 const ReviewSchema = yup.object({
     username: yup.string().min(2).label("Name").required(),
@@ -50,10 +51,15 @@ function SignUpScreen({navigation}) {
         }
     };
 return (
-    <ImageBackground style={styles.container} 
-source={require('../assets/imgs/splash.png')}>
+    <View style={styles.container} 
+// source={require('../assets/imgs/splash.png')}
+>
     <ScrollView style={{flex:1}}>
-    <View style={{height:height*0.25,width:width,justifyContent:'flex-end',alignItems:'flex-start',padding:'5%'}}>
+    <View style={{height:height*0.4,width:width,justifyContent:'flex-end',alignItems:'flex-start',padding:'5%'}}>
+    <View style={{width:width*0.6,height:width*0.25,alignSelf:'center',alignItems:'center',justifyContent:'center',overflow:'hidden',marginBottom:'5%'}}>
+        <Image source={require('../assets/imgs/logo6.png')} style={{width:width*0.7,height:width*0.7,}}/>
+
+        </View>
         <AppText fontFamily={"NunitoSemiBold"} fontSize={width*0.1} color={theme.white}>Welcome</AppText>
         <AppText fontFamily={"NunitoSemiBold"} fontSize={width*0.04} color={theme.white}>Register to continue</AppText>
     </View>
@@ -66,7 +72,7 @@ source={require('../assets/imgs/splash.png')}>
         }}
         >
         {(props)=>(
-            <Animatable.View animation="fadeInUp" duration={2000} delay={500} style={{backgroundColor:theme.white,width:width,height:height*0.6,padding:'5%',marginTop:height*0.15}}>
+            <Animatable.View animation="fadeInUp" duration={2000} delay={500} style={{backgroundColor:theme.white,width:width,height:height*0.6,padding:'5%',}}>
             <AppText fontFamily={"NunitoSemiBold"} fontSize={width*0.05} color={theme.primary}>Username</AppText>
             <AppTextInput 
             onChangeText={props.handleChange('username')}
@@ -75,7 +81,7 @@ source={require('../assets/imgs/splash.png')}>
             touched={props.touched.username}
             errors={props.errors.username}/>
         
-        <AppText fontFamily={"NunitoSemiBold"} fontSize={width*0.05} color={theme.primary} marginTop='5%'>Phone Number</AppText>
+        <AppText fontFamily={"NunitoSemiBold"} fontSize={width*0.05} color={theme.primary} marginTop='1%'>Phone Number</AppText>
         <AppTextInput 
             onChangeText={props.handleChange('user_phone')}
             onBlur={props.handleBlur('user_phone')}
@@ -84,7 +90,7 @@ source={require('../assets/imgs/splash.png')}>
             touched={props.touched.user_phone}
             errors={props.errors.user_phone}/>
 
-        <AppText fontFamily={"NunitoSemiBold"} fontSize={width*0.055} color={theme.primary} marginTop='5%'>Password</AppText>
+        <AppText fontFamily={"NunitoSemiBold"} fontSize={width*0.055} color={theme.primary} marginTop='1%'>Password</AppText>
         
         
         <AppPasswordInput
@@ -96,7 +102,7 @@ source={require('../assets/imgs/splash.png')}>
         />
         <AppButton text={'Login'} alignSelf='center' backgroundColor={theme.primary} textColor={theme.secondary}
         active={active}
-        onPress={props.handleSubmit} marginTop='5%'/>
+        onPress={props.handleSubmit} marginTop='3%'/>
 
         
       
@@ -108,7 +114,7 @@ source={require('../assets/imgs/splash.png')}>
 
 )}</Formik>
 </ScrollView>
-</ImageBackground>
+</View>
 );
 }
 
@@ -117,6 +123,7 @@ const styles = StyleSheet.create({
 container:{
 flex:1,
 justifyContent:'space-between',
- alignItems:'center'
+ alignItems:'center',
+ backgroundColor:colors.secondary
 }
 });

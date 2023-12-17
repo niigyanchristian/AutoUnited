@@ -9,7 +9,8 @@ export default {
     secondaryLight:'#D9D9D926',
     card:'#F5F6FA',
     grey:'#F7F7F7',
-    darkGrey:'#A5A6A8'
+    darkGrey:'#A5A6A8',
+    primaryMedium:'#44a1e32a',
     // secondary:'#0624BF',
     
 }

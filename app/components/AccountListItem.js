@@ -5,10 +5,10 @@ import AppText from './AppText';
 import useAuth from '../auth/useAuth';
 import colors from '../config/colors';
 
-function AccountListItem({Icon,title}) {
+function AccountListItem({Icon,title,onPress}) {
     const {width} = useAuth();
 return (
-<TouchableOpacity style={{flexDirection:'row',alignItems:'center',width:'95%',padding:'5%'}}>
+<TouchableOpacity style={{flexDirection:'row',alignItems:'center',width:'95%',padding:'5%'}} onPress={onPress}>
     {Icon}
     <AppText flex={1} marginLeft={'2%'}>{title}</AppText>
     <MaterialIcons name="keyboard-arrow-right" size={width*0.07} color={colors.dark} />

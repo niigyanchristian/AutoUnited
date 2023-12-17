@@ -10,9 +10,6 @@ import colors from '../config/colors';
 function ProductCard({navigation,item}) {
     const {width,height}=useAuth();
     const {theme}=useTheme();
-    console.log('====================================');
-    console.log(item);
-    console.log('====================================');
 
 return (
 <TouchableOpacity style={{backgroundColor:theme.secondary,height:250,width:width*0.45,margin:'2%',padding:'1%',overflow:'hidden'}}

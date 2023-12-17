@@ -8,9 +8,6 @@ import colors from '../config/colors';
 function AppStatusBar(props) {
     const {theme}=useTheme();
     const {width,height}=useAuth();
-    console.log('====================================');
-    console.log(theme);
-    console.log('====================================');
 
     if(Platform.OS=='ios'){
         return (
@@ -24,8 +21,8 @@ function AppStatusBar(props) {
     }else{
         return (
         <StatusBar
-        backgroundColor={colors.secondary}// Change to your desired background color
-        barStyle={"light-content"} // Change to "dark-content" for dark text
+        backgroundColor={colors.primary}// Change to your desired background color
+        barStyle={"dark-content"} // Change to "dark-content" for dark text
       />
         )
     }

@@ -5,9 +5,14 @@ export default Object.freeze({
 
   HOME_TAB:'AppHome',
   HOME:'home',
+  SERVICES: 'Services',
+  GOOGLE_MAP:'Google_Map',
+
   ACCOUNT_TAB:'AccountTab',
   ACCOUNT:'Account',
   FILL_PROFILE: 'FillProfile',
+  TERMS_AND_CONDITIONS:'TermsAndConditions',
+  PRIVACY_POLICY:'PrivacyPolicy',
 
   CATEGORY:'Category',
   SEARCH:'Search',
@@ -20,7 +25,9 @@ export default Object.freeze({
 
 
   CARS_TAB:'CarsTab',
-  CARS:'Cars'
+  CARS:'Cars',
+  ADD_Car:'AddCar',
+  CAR_DETAIL:'Car_details'
 
 
 

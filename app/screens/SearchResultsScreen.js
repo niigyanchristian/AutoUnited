@@ -45,7 +45,6 @@ return (
     keyExtractor={item => item.part_id}
     renderItem={({ item,index }) => 
     {
- console.log("ppppppppppp=>",item)
       return(
         <ProductCard item={item} navigation={navigation}/>
       )}}

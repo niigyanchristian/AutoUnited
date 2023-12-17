@@ -35,11 +35,7 @@ function SearchScreen({navigation}) {
 
     const handleSubmit = async () => {
         setActive(true)
-        let datas = any?'':`?part_name=${Battery}&vehicle=${textInputValue} matrix`
-        
-    console.log('====================================');
-    console.log(datas);
-    console.log('====================================');
+        let datas = any?'':`?part_name=${Battery}&vehicle=${textInputValue} matrix`;
         const {data,status} = await searchPartsApi.request(datas);
     
         if (!status) {
@@ -47,7 +43,6 @@ function SearchScreen({navigation}) {
             // setActive(false)
             return;
         } else {
-            console.log("Result=>",data.results.length);
             navigation.navigate(routes.MAIN_SEARCH_TAB,{
             screen:routes.SEARCH_RESULTS,
             params:{parts:data.results}

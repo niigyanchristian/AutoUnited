@@ -26,8 +26,9 @@ const HomeNavigator = ({navigation,route}) =>{
       headerTitleAlign:'center'
     }}>
       <Stack.Screen name={routes.HOME} component={controler.HomeStackScreen} options={{headerShown:false}}/>
-      {/* <Stack.Screen name={routes.CATEGORY} component={controler.CategoryStackScreen} options={{headerShown:false}}/>
-      <Stack.Screen name={routes.SEARCH} component={controler.SearchStackScreen} options={{headerShown:false}}/>
+       <Stack.Screen name={routes.SERVICES} component={controler.ServicesStackScreen} options={{headerShown:false}}/>
+       <Stack.Screen name={routes.GOOGLE_MAP} component={controler.GoogleMapStackScreen} options={{headerShown:false}}/>
+      {/*
       <Stack.Screen name={routes.SEARCH_RESULTS} component={controler.SearchResultsStackScreen} options={{headerShown:false,}}/>
       <Stack.Screen name={routes.DETAILS} component={controler.DetailsStackScreen} options={{headerShown:false,}}/> */}
       {/* 

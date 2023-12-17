@@ -16,8 +16,8 @@ function Reviews(props) {
     const {theme}=useTheme();
 return (
 <View>
-<AppText fontSize={width*0.05} fontFamily={"NunitoSemiBold"} marginLeft='3%'>Reviews</AppText>
-        <View style={{height:height*0.185,padding:'1.5%',paddingTop:0}}>
+<AppText fontSize={width*0.05} fontFamily={"NunitoSemiBold"} marginLeft='1%'>Reviews</AppText>
+        <View style={{height:height*0.18,paddingTop:0,alignItems:'center'}}>
         <AppFeaturedProductsScrow titleOnly={true} disOnly={true}/>
         </View>
 

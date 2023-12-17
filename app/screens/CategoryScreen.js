@@ -35,7 +35,6 @@ function CategoryScreen(props) {
     const {theme}=useTheme();
     const [selected,setSelected]=useState(0);
     const [selectedItem,onSelectedItem]=useState(data[0]);
-    console.log(data[0])
 return (
 <View style={styles.container}>
     <AppHeader Component={<AppPicker items={data} selectedItem={selectedItem}  onSelectedItem={onSelectedItem} width={width*0.5}/>}/>
@@ -69,8 +68,8 @@ backgroundColor:colors.primary,
 },
 wapper:{
     width:'100%',
-    borderBottomWidth:1,
-    borderStyle:'dashed',
+    // borderBottomWidth:1,
+    // borderStyle:'dashed',
     borderColor:colors.secondary,
     marginVertical:'2%',
     flexDirection:'row',

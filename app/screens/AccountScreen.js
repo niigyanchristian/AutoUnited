@@ -45,8 +45,17 @@ return (
 
     
     <AccountListItem title={'Help & Support'} Icon={<FontAwesome5 name="headset" size={width*0.07} color={colors.dark} />}/>
-    <AccountListItem title={'Privacy'} Icon={<MaterialCommunityIcons name="shield-check-outline" size={width*0.07} color={colors.dark} />}/>
-    <AccountListItem title={'Terms & Conditions'} Icon={<MaterialIcons name="list-alt" size={width*0.07} color={colors.dark} />}/>
+    <AccountListItem title={'Privacy'} Icon={<MaterialCommunityIcons name="shield-check-outline" size={width*0.07} color={colors.dark} />}
+    onPress={()=>navigation.navigate(routes.ACCOUNT_TAB,{
+        screen:routes.PRIVACY_POLICY,
+        })}/>
+
+        {/* Terms and Conditions */}
+    <AccountListItem title={'Terms & Conditions'} Icon={<MaterialIcons name="list-alt" size={width*0.07} color={colors.dark} />}
+    onPress={()=>navigation.navigate(routes.ACCOUNT_TAB,{
+        screen:routes.TERMS_AND_CONDITIONS,
+        })}
+    />
     <AccountListItem title={'Invite friends'} Icon={<Ionicons name="share-social-outline" size={width*0.07} color={colors.dark} />}/>
     <View style={{height:1,width:'95%',backgroundColor:colors.dark}}></View>
 

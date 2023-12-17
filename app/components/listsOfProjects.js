@@ -18,7 +18,7 @@ function ListsOfProjects({navigation}) {
 return (
     <View>
         {data.map((item)=>(
-            <TouchableOpacity key={item.id} style={{width:'100%',height:width*0.3,flexDirection:'row',alignItems:'center',borderBottomWidth:1,borderColor:colors.mediumDark}}
+            <TouchableOpacity key={item.id} style={{width:'100%',height:width*0.3,flexDirection:'row',alignItems:'center',}}
 // onPress={()=>
 //     navigation.navigate(routes.SAVEDTAB,{
 //     screen:routes.PROJECTDETAILS,

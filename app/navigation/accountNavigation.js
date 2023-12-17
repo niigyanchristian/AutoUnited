@@ -27,6 +27,8 @@ const AccountNavigator = ({navigation,route}) =>{
     }}>
       <Stack.Screen name={routes.ACCOUNT} component={controler.AccountStackScreen} options={{headerShown:false}}/>
       <Stack.Screen name={routes.FILL_PROFILE} component={controler.FillProfileStackScreen} options={{headerShown:true,headerTitle:'Edit Profile'}}/>
+      <Stack.Screen name={routes.PRIVACY_POLICY} component={controler.PrivacyPolicyStackScreen} options={{headerShown:false,headerTitle:'Edit Profile'}}/>
+      <Stack.Screen name={routes.TERMS_AND_CONDITIONS} component={controler.TermsAndConditionsStackScreen} options={{headerShown:false,headerTitle:'Edit Profile'}}/>
     </Stack.Navigator>
   )
 }

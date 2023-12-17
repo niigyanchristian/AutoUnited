@@ -56,7 +56,6 @@ horizontal
 showsHorizontalScrollIndicator={false}
 contentContainerStyle={{marginVertical:'1%'}}>
 {data.map(item=>{
-        console.log(item.part_id,item.id)
         return(
             <View key={item.part_id}  style={{width:width*0.47,}}>
             <ProductCard item={item} navigation={navigation}/>
