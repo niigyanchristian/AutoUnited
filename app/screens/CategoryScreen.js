@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import AppText from '../components/AppText';
 import AppHeader from '../components/AppHeader';
@@ -8,9 +8,10 @@ import Card from '../components/Card';
 import AppPicker from '../components/AppPicker';
 import colors from '../config/colors';
 import AppScrowCard from '../components/AppScrowCard';
+import useApi from '../hooks/useApi';
+import categories from '../api/categories';
 
-
-const data = [
+const datad = [
     {id:1,title:'AC & Heat'},
     {id:2,title:'Accessories & Lubes'},
     {id:3,title:'Air Intake & Fuel Delivery'},
@@ -34,23 +35,46 @@ function CategoryScreen(props) {
     const {width,height}=useAuth();
     const {theme}=useTheme();
     const [selected,setSelected]=useState(0);
-    const [selectedItem,onSelectedItem]=useState(data[0]);
+    const [selectedItem,onSelectedItem]=useState([]);
+    const [active,setActive] =useState(false);
+    const [data,setData] =useState(null);
+    const getCategoriesApi = useApi(categories.getCategories);
+
+    useEffect(()=>{
+        handleSubmit();
+      },[])
+    
+      const handleSubmit = () => {
+        setActive(true);
+        getCategoriesApi.request().
+        then((response)=>{
+            let info = []
+            response.data.results.forEach(element => 
+                info.push({id:element.category_id,title:element.category_name}));
+          setData(info)
+          onSelectedItem(info[0])
+        }).
+        catch((e)=>console.error(e)).
+        finally(()=>setActive(false));
+    };
+  
+
 return (
 <View style={styles.container}>
-    <AppHeader Component={<AppPicker items={data} selectedItem={selectedItem}  onSelectedItem={onSelectedItem} width={width*0.5}/>}/>
+    <AppHeader Component={data?<AppPicker items={data} selectedItem={selectedItem}  onSelectedItem={onSelectedItem} width={width*0.5}/>:<AppText>Loading...</AppText>}/>
         <View style={{width:width}}>
-                <AppText fontFamily='NunitoSemiBold' marginLeft='3%' fontSize={width*0.05}>Crowns & Emblems</AppText>
-            <View style={[styles.wapper,{height:height*0.17}]}>
+                <AppText fontFamily='NunitoExtraBold' marginTop='5%' marginLeft='3%' fontSize={width*0.045}>Crowns & Emblems</AppText>
+            <View style={[styles.wapper,{}]}>
             <AppScrowCard toggleBgColor={false} />
                 
             </View>
             
-            <AppText fontFamily='NunitoSemiBold' marginLeft='3%' fontSize={width*0.05}>Lubricants & Additives</AppText>
-            <View style={[styles.wapper,{height:height*0.17}]}>
+            <AppText fontFamily='NunitoExtraBold' marginTop='5%' marginLeft='3%' fontSize={width*0.045}>Lubricants & Additives</AppText>
+            <View style={[styles.wapper,{}]}>
             <AppScrowCard toggleBgColor={true} />
             </View>
-                <AppText fontFamily='NunitoSemiBold' marginLeft='3%' fontSize={width*0.05}>Tools & Equipment</AppText>
-            <View style={[styles.wapper,{height:height*0.17}]}>
+                <AppText fontFamily='NunitoExtraBold' marginTop='5%' marginLeft='3%' fontSize={width*0.045}>Tools & Equipment</AppText>
+            <View style={[styles.wapper,{}]}>
             <AppScrowCard />
             </View>
         </View>
@@ -68,12 +92,10 @@ backgroundColor:colors.primary,
 },
 wapper:{
     width:'100%',
-    // borderBottomWidth:1,
-    // borderStyle:'dashed',
     borderColor:colors.secondary,
-    marginVertical:'2%',
+    // marginVertical:'2%',
     flexDirection:'row',
     alignItems:'center',
-    // paddingVertical:'3%'
+    backgroundColor:colors.primaryMedium
 }
 });

@@ -17,13 +17,11 @@ return (
             navigation.navigate(routes.MAIN_SEARCH_TAB,{
             screen:routes.DETAILS,
             params:{part:item}
-            })
-            }
-        >
+            })}>
             <Image style={{width:'100%',height:'50%',alignSelf:'center'}} source={require('../assets/imgs/male_13.jpg')}/>
             <View style={{padding:'3%'}}>
 
-            <AppText color={theme.secondary=='#fff'?theme.dark:theme.white} numberOfLines={1}>{item.part_name}</AppText>
+            <AppText color={theme.secondary=='#fff'?theme.dark:theme.white} numberOfLines={1} fontFamily={"NunitoExtraBold"}>{item.part_name}</AppText>
             <AppText color={theme.secondary=='#fff'?theme.dark:theme.white} numberOfLines={2} fontSize={width*0.035}>{item.part_description}</AppText>
             <AppText color={colors.secondary} fontSize={width*0.045} fontFamily={"NunitoExtraBold"}>GH₵ {item.part_price}</AppText>
             <View>

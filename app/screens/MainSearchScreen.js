@@ -71,14 +71,16 @@ onPress={()=>
     </View>
 
     <ScrollView style={{flex:1,paddingTop:'5%'}} contentContainerStyle={{alignItems:'center',paddingBottom:'5%'}}>
+    <View style={{width:'100%',backgroundColor:colors.primaryMedium}}>
     <AppAdvertScrow/>
+        </View>    
     
     {/* Featured Products */}
     <View style={{width:width*0.98,padding:'1.5%'}}>
         <AppText fontFamily={"NunitoExtraBold"} fontSize={width*0.055} marginLeft='2%' >Featured Products</AppText>
         {/* <AppFeaturedProductsScrow/> */}
     </View>
-    <ListsOfProjects/>
+    <ListsOfProjects navigation={navigation}/>
     </ScrollView>
 </View>
 );

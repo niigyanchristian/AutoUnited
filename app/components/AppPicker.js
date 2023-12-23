@@ -19,6 +19,8 @@ function AppPicker({items,placeholder,onSelectedItem,selectedItem,...otherprop})
     const [modal,setModal]=useState(false);
     const {width,height} =useAuth();
     const {theme}=useTheme();
+
+    console.log("l>",items[0].title,selectedItem)
     
 return (
     <>

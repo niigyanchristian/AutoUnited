@@ -26,7 +26,7 @@ return (
     contentContainerStyle={{gap:5,paddingHorizontal:'2%'}}>
        {data.map((item)=>(
         <View key={item.id} style={{backgroundColor:colors.primary,height:width*0.45,width:width*0.85,flexDirection:'row',justifyContent:'center',alignItems:'center',borderRadius:width*0.03,padding:width*0.02,overflow:'hidden',elevation:2,marginVertical:'0.5%'}}>
-          <Image source={require('../assets/imgs/toyota.png')} style={{height:'100%',width:'100%'}}/>
+          <Image source={require('../assets/imgs/toyota.png')} style={{height:'100%',width:'100%',resizeMode:'contain'}}/>
         </View>
        ))}        
     </ScrollView>
