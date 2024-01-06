@@ -32,7 +32,10 @@
     "react-native-maps": "1.7.1",
     "expo-checkbox": "~2.4.0",
     "@react-native-community/datetimepicker": "7.2.0",
-    "expo-location": "~16.1.0"
+    "expo-location": "~16.1.0",
+    "expo-web-browser": "~12.3.2",
+    "expo-auth-session": "~5.0.2",
+    "expo-crypto": "~12.4.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"

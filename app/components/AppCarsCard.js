@@ -1,13 +1,13 @@
 import React from 'react';
-import { View, StyleSheet,Image } from 'react-native';
+import { View, StyleSheet,Image, TouchableOpacity } from 'react-native';
 import useAuth from '../auth/useAuth';
 import colors from '../config/colors';
 import AppText from './AppText';
 
-function AppCarsCard(props) {
+function AppCarsCard({onPress}) {
     const {width,height}=useAuth();
 return (
-<View style={{ width:width*0.95,backgroundColor:colors.primary,borderRadius:width*0.05,flexDirection:'row',overflow:'hidden',marginVertical:'2%'}}>
+<TouchableOpacity onPress={onPress} style={{ width:width*0.95,backgroundColor:colors.primary,borderRadius:width*0.05,flexDirection:'row',overflow:'hidden',marginVertical:'2%'}}>
             <View style={{width:width*0.3,height:width*0.3}}>
             <Image source={require('../assets/imgs/toyota.png')} resizeMode='contain' style={{height:'100%',width:'100%'}}/>
             </View>
@@ -15,7 +15,7 @@ return (
                 <AppText fontFamily='NunitoExtraBold' fontSize={width*0.045} numberOfLines={1}>Toyota</AppText>
                 <AppText fontSize={width*0.035}>GT-2023-23</AppText>
             </View>
-        </View>
+        </TouchableOpacity>
 );
 }
 

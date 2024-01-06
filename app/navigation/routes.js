@@ -1,5 +1,5 @@
 export default Object.freeze({
-  FIRST:'first',
+  GET_SARTED:'first',
   SIGN_IN:'SignIn',
   SIGN_UP:'SignUp',
 
@@ -13,6 +13,8 @@ export default Object.freeze({
   FILL_PROFILE: 'FillProfile',
   TERMS_AND_CONDITIONS:'TermsAndConditions',
   PRIVACY_POLICY:'PrivacyPolicy',
+  ADD_SHOP:"AddShop",
+  ADD_SERVICES:'AddServices',
 
   CATEGORY:'Category',
   SEARCH:'Search',

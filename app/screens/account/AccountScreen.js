@@ -1,24 +1,25 @@
 import React from 'react';
-import { View, StyleSheet,Image, TouchableOpacity } from 'react-native';
-import AppText from '../components/AppText';
-import colors from '../config/colors';
-import { MaterialIcons,MaterialCommunityIcons,Ionicons,FontAwesome,FontAwesome5,AntDesign } from '@expo/vector-icons';
+import { View, StyleSheet,Image, TouchableOpacity, ScrollView } from 'react-native';
+import AppText from '../../components/AppText';
+import colors from '../../config/colors';
+import { MaterialIcons,MaterialCommunityIcons,Ionicons,FontAwesome,FontAwesome5,AntDesign,Fontisto } from '@expo/vector-icons';
 import Constants from 'expo-constants';
-import useAuth from '../auth/useAuth';
-import AccountListItem from '../components/AccountListItem';
-import routes from '../navigation/routes';
+import useAuth from '../../auth/useAuth';
+import AccountListItem from '../../components/AccountListItem';
+import routes from '../../navigation/routes';
 
 function AccountScreen({navigation}) {
     const {width,user,logOut} = useAuth();
 return (
-<View style={styles.container}>
+    <View style={styles.container}>
+    <ScrollView contentContainerStyle={{width:width}}>
 <View style={{width:'100%',height:width*0.25,flexDirection:'row',alignItems:'center',borderColor:colors.mediumDark}}>
         <View style={{flex:2,justifyContent:'center',alignItems:'center'}}>
-            <Image style={{width:width*0.16,height:width*0.16,borderRadius:width*0.16}} source={require('../assets/imgs/me.jpg')}/>
+            <Image style={{width:width*0.16,height:width*0.16,borderRadius:width*0.16}} source={require('../../assets/imgs/me.jpg')}/>
         </View>
         <View style={{flex:5,padding:'2%'}}>
-            <AppText fontFamily='NunitoExtraBold' numberOfLines={1}>{user.first_name} {user.last_name}</AppText>
-            <AppText fontSize={width*0.04} numberOfLines={1}>niigyan@gmail.com</AppText>
+            <AppText fontFamily='NunitoExtraBold' numberOfLines={1}>{user.first_name||'Fill Name'} {user.last_name}</AppText>
+            <AppText fontSize={width*0.04} numberOfLines={1}>{user.user_email||'Fill Email'}</AppText>
         </View>
         <View style={{flex:3,justifyContent:'center',alignItems:'center'}}>
             <View style={{backgroundColor:'#0080001C',width:'100%',borderTopLeftRadius:10,borderBottomLeftRadius:10,justifyContent:'center',alignItems:'center',flexDirection:'row',padding:'1%'}}>
@@ -37,6 +38,26 @@ return (
     <View style={{height:1,width:'95%',backgroundColor:colors.dark}}></View>
 
 
+    <AccountListItem title={'Add Shop'} Icon={<Fontisto name="shopping-store" size={width*0.06} color="black" />} onPress={()=>{
+        navigation.navigate(routes.ACCOUNT_TAB,{
+            screen:routes.ADD_SHOP
+        })
+    }}/>
+    <AccountListItem title={'Add Products'} Icon={<MaterialCommunityIcons name="engine-outline" size={width*0.07} color="black" />} onPress={()=>{
+        navigation.navigate(routes.ACCOUNT_TAB,{
+            screen:routes.ADD_SHOP
+        })
+    }}/>
+    <AccountListItem title={'Add Services'} Icon={<MaterialIcons name="home-repair-service" size={width*0.07} color="black" />} onPress={()=>{
+        navigation.navigate(routes.ACCOUNT_TAB,{
+            screen:routes.ADD_SERVICES
+        })
+    }}/>
+    <AccountListItem title={'Check Orders'} Icon={<MaterialCommunityIcons name="order-bool-descending-variant" size={width*0.07} color="black" />} onPress={()=>{
+        navigation.navigate(routes.ACCOUNT_TAB,{
+            screen:routes.ADD_SHOP
+        })
+    }}/>
     <AccountListItem title={'Notifications'} Icon={<FontAwesome name="bell-o" size={width*0.07} color={colors.dark} />}/>
     {/* <AccountListItem title={'Payment Methods'} Icon={<MaterialIcons name="payment" size={width*0.07} color={colors.dark} />}/> */}
     
@@ -65,6 +86,7 @@ return (
     <AntDesign name="logout" size={width*0.07} color="black" />
     <AppText flex={1} marginLeft={'2%'}>Logout</AppText>
 </TouchableOpacity>
+</ScrollView>
 </View>
 );
 }

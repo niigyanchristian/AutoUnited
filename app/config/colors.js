@@ -1,6 +1,7 @@
 export default {
     black: "#000",
     dark:'#333',
+    Pending: '#fe8900',
     mediumDark:'#535353ce',
     lightDark:'#ddd',
     primary:'#fff',

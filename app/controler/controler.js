@@ -1,10 +1,10 @@
-import AccountScreen from "../screens/AccountScreen"
+import AccountScreen from "../screens/account/AccountScreen"
 import CarsScreen from "../screens/cars/CarsScreen"
 import CartScreen from "../screens/CartScreen"
 import CategoryScreen from "../screens/CategoryScreen"
 import DetailsScreen from "../screens/DetailsScreen"
 import FillProfileScreen from "../screens/FillProfileScreen"
-import FirstScreen from "../screens/FirstScreen"
+// import FirstScreen from "../screens/FirstScreen"
 import HomeScreen from "../screens/HomeScreen"
 import MainSearchScreen from "../screens/MainSearchScreen"
 import SearchResultsScreen from "../screens/SearchResultsScreen"
@@ -18,6 +18,9 @@ import AddCarScreen from "../screens/cars/AddCarScreen"
 import CardetailsScreen from "../screens/cars/CardetailsScreen"
 import PrivacyPolicyScreen from "../screens/account/Privacy"
 import TermsAndConditionsScreen from "../screens/account/TermsAndConditionsScreen"
+import AddShop from "../screens/account/AddShop"
+import AddServices from "../screens/account/AddServices"
+import GetStarted from "../screens/auth/GetStarted"
 
 
 const AccountStackScreen = ({ navigation,route })=> <AccountScreen navigation={navigation} route={route}/>
@@ -30,7 +33,7 @@ const CardetailsStackScreen = ({ navigation,route })=> <CardetailsScreen navigat
 
 const DetailsStackScreen = ({ navigation,route })=> <DetailsScreen navigation={navigation} route={route}/>
 
-const FirstStackScreen = ({ navigation })=> <FirstScreen navigation={navigation}/>
+// const FirstStackScreen = ({ navigation })=> <FirstScreen navigation={navigation}/>
 const FillProfileStackScreen = ({ navigation,route })=> <FillProfileScreen navigation={navigation} route={route}/>
 
 const GoogleMapStackScreen = ({ navigation,route })=> <GoogleMapScreen navigation={navigation} route={route}/>
@@ -48,6 +51,12 @@ const SignUpStackScreen = ({ navigation,route })=> <SignUpScreen navigation={nav
 const ServicesStackScreen = ({ navigation,route })=> <ServicesScreen navigation={navigation} route={route}/>
 
 const TermsAndConditionsStackScreen = ({ navigation,route })=> <TermsAndConditionsScreen navigation={navigation} route={route}/>
+
+const AddShopStackScreen = ({ navigation,route })=> <AddShop navigation={navigation} route={route}/>
+const AddServicesStackScreen = ({ navigation,route })=> <AddServices navigation={navigation} route={route}/>
+const GetStartedStackScreen = ({ navigation,route })=> <GetStarted navigation={navigation} route={route}/>
+
+
     
     
 export default{
@@ -58,7 +67,7 @@ export default{
   CardetailsStackScreen,
   CarsStackScreen,
   DetailsStackScreen,
-  FirstStackScreen,
+  // FirstStackScreen,
   FillProfileStackScreen,
   GoogleMapStackScreen,
   HomeStackScreen,
@@ -69,5 +78,8 @@ export default{
   SignInStackScreen,
   SignUpStackScreen,
   ServicesStackScreen,
-  TermsAndConditionsStackScreen
+  TermsAndConditionsStackScreen,
+  AddShopStackScreen,
+  AddServicesStackScreen,
+  GetStartedStackScreen
   }

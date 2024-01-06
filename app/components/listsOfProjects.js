@@ -24,7 +24,6 @@ function ListsOfProjects({navigation}) {
     setActive(true);
     partsApi.request('').
     then((response)=>{
-        console.log("heat=>",response.data.results)
       setData(response.data.results)
     }).
     catch((e)=>console.error(e)).
@@ -42,7 +41,6 @@ return (
         {data.map((item)=>(
             <TouchableOpacity key={item.part_id} style={{width:'100%',height:width*0.3,flexDirection:'row',alignItems:'center',}}
 onPress={()=>{
-    console.log(item)
     navigation.navigate(routes.MAIN_SEARCH_TAB,{
     screen:routes.DETAILS,
     params:{part:item}})

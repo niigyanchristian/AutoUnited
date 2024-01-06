@@ -12,6 +12,7 @@ import { useTheme } from '../hooks/ThemeContext';
 import partsApi from '../api/parts';
 import useApi from '../hooks/useApi';
 import colors from '../config/colors';
+import useLocation from '../hooks/useLocation';
 
 const data = [
     {id:1,title:'Spark plug'},
@@ -35,6 +36,7 @@ function SearchScreen({navigation}) {
 
     const handleSubmit = async () => {
         setActive(true)
+        const res=await useLocation().getLocation();
         let datas = any?'':`?part_name=${Battery}&vehicle=${textInputValue} matrix`;
         const {data,status} = await searchPartsApi.request(datas);
     
@@ -45,7 +47,7 @@ function SearchScreen({navigation}) {
         } else {
             navigation.navigate(routes.MAIN_SEARCH_TAB,{
             screen:routes.SEARCH_RESULTS,
-            params:{parts:data.results}
+            params:{parts:data.results,location:res}
             })
 
             // logIn(result.data.results)

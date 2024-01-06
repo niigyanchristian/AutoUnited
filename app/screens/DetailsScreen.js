@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, StyleSheet, ScrollView, Image, TouchableOpacity, Modal, TouchableWithoutFeedback } from 'react-native';
 import { MaterialCommunityIcons,MaterialIcons,Entypo } from '@expo/vector-icons';
 
@@ -14,6 +14,7 @@ import ProductCard from '../components/ProductCard';
 import Similar from '../components/Similar';
 import AppButton from '../components/AppButton';
 import colors from '../config/colors';
+import usecart from '../auth/usecart';
 
 const data = [
     {id:1,shopName:'Shop 1',discription:'Toyota Camry Slightly Used Suspension Rods …',price:'20.00',img:require('../assets/imgs/male_13.jpg'),rate:4.5},
@@ -26,9 +27,21 @@ function DetailsScreen({navigation,route}) {
     const {width,height}= useAuth();
     const {theme}=useTheme();
     const [modal,setModal]=useState(false);
+    const [items,setItems]=useState([]);
+    const [change,setChange]=useState(false);
+
+    const getFunc = async () => {
+      setItems(await usecart.getCart());
+      console.log("items",await usecart.getCart())
+    };
+    
+    useEffect(() => {
+      getFunc();
+    }, [change]);
+
 return (
 <View style={styles.container}>
-    <AppHeader Component={<AppText fontSize={width*0.045} fontFamily={"NunitoExtraBold"}>Component Details</AppText>}/>
+    <AppHeader Component={<AppText fontSize={width*0.045} fontFamily={"NunitoExtraBold"}>Component Details</AppText>} cartCount={items.length}/>
     <ScrollView>
     <View style={{width:'100%',backgroundColor:colors.primaryMedium}}>
     <ScrowImages/>
@@ -90,7 +103,10 @@ return (
             {/* </View> */}
             <View  style={{flexDirection:'row',width:width,justifyContent:'space-around',alignItems:'center',alignSelf:'center',backgroundColor:colors.primaryMedium}}>
                 <AppButton text={'Call'} width={width*0.4}/>
-                <AppButton text={'Add to cart'} width={width*0.4}/>
+                <AppButton text={'Add to cart'} width={width*0.4} onPress={()=>{
+                  usecart.storeCart([...items,{id:3,title:'1234'}])
+                  setChange(!change);
+                  }}/>
             </View>
         </ScrollView>
 

@@ -4,13 +4,13 @@ import useAuth from '../auth/useAuth';
 import { useTheme } from '../hooks/ThemeContext';
 import colors from '../config/colors';
 
-function AppTextInput({placeholder,padding='2%',borderRadius=50,textContentType,onChangeText,onBlur,value,touched,errors,secureTextEntry=false,keyboardType='default',multiline=false,maxLength,onFocus,...others}) {
+function AppTextInput({placeholder,padding='2%',borderRadius=10,textContentType,onChangeText,onBlur,value,touched,errors,secureTextEntry=false,keyboardType='default',multiline=false,maxLength,onFocus,...others}) {
 
     const {width} = useAuth();
     const {theme}=useTheme();
 return (
     <>
-    <View style={{borderWidth:2,borderColor:theme.primary,borderRadius:10,padding:'2%',paddingHorizontal:'5%',marginBottom:'3%',...others}}>
+    <View style={{borderWidth:2,borderColor:theme.primary,borderRadius:borderRadius,padding:'2%',paddingHorizontal:'5%',marginBottom:'3%',...others}}>
             <TextInput
                 placeholder={placeholder}
                 textContentType={textContentType}

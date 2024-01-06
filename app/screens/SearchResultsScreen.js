@@ -16,7 +16,7 @@ import colors from '../config/colors';
 
 
 function SearchResultsScreen({navigation,route}) {
-    const {parts} = route.params;
+    const {parts,location} = route.params;
     const {width,height}=useAuth();
     const {theme}=useTheme();
     const [list,setList]=useState(false);

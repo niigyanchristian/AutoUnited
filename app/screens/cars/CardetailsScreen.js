@@ -10,6 +10,8 @@ import useAuth from '../../auth/useAuth';
 import colors from '../../config/colors';
 import AppPicker from '../../components/AppPicker';
 import AppButton from '../../components/AppButton';
+import usecart from '../../auth/usecart';
+import useActiveScreenFunc from '../../hooks/useActiveScreenFunc';
 
 
 const data = [
@@ -19,15 +21,21 @@ const data = [
     {id:4,title:'Day'},
 ]
 
-function CardetailsScreen(props) {
+function CardetailsScreen({route}) {
     const {width,height}=useAuth();
+    const {item}=route.params;
     const [isChecked, setChecked] = useState(false);
     const [selectedItem1,onSelectedItem1]=useState(data[0]);
     const [selectedItem2,onSelectedItem2]=useState(data[0]);
     const [date, setDate] = useState(new Date(Date.now()));
     const [show, setShow] = useState(false);
     const [mode, setMode] = useState('date');
+    const [items,setItems]=useState([]);
 
+    const getFunc = async () => {
+      setItems(await usecart.getCart());
+    };
+    useActiveScreenFunc().FocusedAndBlur(()=>getFunc(),()=>null)
 
     const onChange = (event, selectedDate) => {
         const currentDate = selectedDate || date;
@@ -49,7 +57,7 @@ function CardetailsScreen(props) {
       };
 return (
 <View style={styles.container}>
-    <AppHeader Component={<AppText fontFamily='NunitoExtraBold' fontSize={width*0.045}>Car Details</AppText>}/>
+    <AppHeader Component={<AppText fontFamily='NunitoExtraBold' fontSize={width*0.045}>Car Details</AppText>} cartCount={items.length}/>
     <ScrollView style={{flex:1}} contentContainerStyle={{padding:'5%',width:'100%',backgroundColor:colors.secondaryLight,width:width}}>
         <View style={{alignItems:'center'}}>
             <Image source={require('../../assets/imgs/toyota.png')}/>
@@ -58,13 +66,13 @@ return (
 
         <View>
         <AppText numberOfLines={1} marginVertical={'1%'}>Make: Toyota</AppText>
-        <AppText numberOfLines={1} marginVertical={'1%'}>Model: Corolla</AppText>
-        <AppText numberOfLines={1} marginVertical={'1%'}>Transmission: Automatic</AppText>
+        <AppText numberOfLines={1} marginVertical={'1%'}>Model: {item.model_name}</AppText>
+        <AppText numberOfLines={1} marginVertical={'1%'}>Transmission: {item.transmission}</AppText>
         <AppText numberOfLines={1} marginVertical={'1%'}>Chassis: TV-23-IKOL3R</AppText>
-        <AppText numberOfLines={1} marginVertical={'1%'}>Drive train: Salon</AppText>
-        <AppText numberOfLines={1} marginVertical={'1%'}>Body Type: Sedan</AppText>
-        <AppText numberOfLines={1} marginVertical={'1%'}>Fuel Type: Petrol / Super</AppText>
-        <AppText numberOfLines={1} marginVertical={'1%'}>Model Year: 2023</AppText>
+        <AppText numberOfLines={1} marginVertical={'1%'}>Drive train: {item.drivetrain}</AppText>
+        <AppText numberOfLines={1} marginVertical={'1%'}>Body Type: {item.body_type}</AppText>
+        <AppText numberOfLines={1} marginVertical={'1%'}>Fuel Type: {item.fuel_type}</AppText>
+        <AppText numberOfLines={1} marginVertical={'1%'}>Model Year: {item.model_year}</AppText>
         </View>
         <View>
         <AppText fontFamily='NunitoExtraBold' fontSize={width*0.045} textAlign='center' marginTop="10%">Reminders</AppText>

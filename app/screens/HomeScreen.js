@@ -12,6 +12,9 @@ import AppAdvertScrow from '../components/AppAdvertScrow';
 
 function HomeScreen({navigation}) {
     const {width,user}=useAuth();
+    console.log('====================================');
+    console.log(user);
+    console.log('====================================');
 
 return (
 <ScrollView contentContainerStyle={[styles.container,{width:width}]}>

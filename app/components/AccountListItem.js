@@ -8,9 +8,9 @@ import colors from '../config/colors';
 function AccountListItem({Icon,title,onPress}) {
     const {width} = useAuth();
 return (
-<TouchableOpacity style={{flexDirection:'row',alignItems:'center',width:'95%',padding:'5%'}} onPress={onPress}>
+<TouchableOpacity style={{flexDirection:'row',alignItems:'center',width:'95%',padding:'3%'}} onPress={onPress}>
     {Icon}
-    <AppText flex={1} marginLeft={'2%'}>{title}</AppText>
+    <AppText flex={1} marginLeft={'2%'} fontFamily='NunitoSemiBold'>{title}</AppText>
     <MaterialIcons name="keyboard-arrow-right" size={width*0.07} color={colors.dark} />
 </TouchableOpacity>
 );

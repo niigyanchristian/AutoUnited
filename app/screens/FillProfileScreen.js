@@ -16,7 +16,6 @@ import useImage from '../hooks/useImage';
 import useApi from '../hooks/useApi';
 
 function FillProfileScreen(props) {
-    const widths = Dimensions.get('window').width;
     const {width,user,logIn}=useAuth();
     const [modalOpen,setModalOpen]= useState(false);
     const [active,setActive]= useState(false);
@@ -113,7 +112,6 @@ return (
                   value={props.values.user_phone}
                   touched={props.touched.user_phone}
                   errors={props.errors.user_phone}/>
-                  {/* <AppPicker/> */}
                   <AppButton text={'Continue'}
                   active={active}
                   onPress={props.handleSubmit}/>

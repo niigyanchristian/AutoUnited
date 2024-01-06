@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, TouchableOpacity, Modal, FlatList,Image, Platform } from 'react-native';
-import AppText from './AppText';
+import { View, StyleSheet, TouchableOpacity, Modal, FlatList,Image } from 'react-native';
+import AppText from '../AppText';
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { MaterialIcons } from '@expo/vector-icons';
-import AppButton from './AppButton';
-import useAuth from '../auth/useAuth';
-import { useTheme } from '../hooks/ThemeContext';
-import colors from '../config/colors';
+import AppButton from '../AppButton';
+import useAuth from '../../auth/useAuth';
+import { useTheme } from '../../hooks/ThemeContext';
+import colors from '../../config/colors';
 
 
 
@@ -17,22 +17,21 @@ import colors from '../config/colors';
 
 function AppPicker({items,placeholder,onSelectedItem,selectedItem,...otherprop}) {
     const [modal,setModal]=useState(false);
-    const {width,height} =useAuth();
-    const {theme}=useTheme();
+    const {width} =useAuth();
+
     
 return (
     <>
    
             <TouchableOpacity
-            style={{backgroundColor:colors.grey,borderRadius:width*0.02, height:height*0.06,flexDirection:'row',paddingHorizontal:'2%',alignItems:'center',...otherprop}}
+            style={{backgroundColor:colors.primary, paddingVertical:10,marginVertical:10,borderRadius:50,flexDirection:'row',paddingHorizontal:10,alignItems:'center',...otherprop}}
             
             onPress={()=>setModal(true)}>
                 <View style={{flexDirection:'row',flex:1,alignItems:'center'}}>
-                {/* <MaterialIcons style={{marginRight:10}} size={25} name='account-circle' color={theme.mediumDark}/> */}
-                  <AppText fontSize={15} color={selectedItem ? colors.dark : 'yellow'}> {placeholder??selectedItem.title}</AppText>
-                  {/* <AppText>Helll</AppText> */}
+                <MaterialIcons style={{marginRight:10}} size={25} name='account-circle' color={colors.mediumDark}/>
+                  <AppText fontSize={15} color={selectedItem ? colors.dark : 'red'} children={selectedItem ? selectedItem.service_name : placeholder}/>
                 </View>
-                <MaterialCommunityIcons name="chevron-down" size={20} color={theme.dark} />
+                <MaterialCommunityIcons name="chevron-down" size={20} color={colors.dark} />
             </TouchableOpacity>
 
 
@@ -40,10 +39,10 @@ return (
 
 
             <Modal visible={modal}>
-                <View style={{backgroundColor:theme.white,flex:1}}>
+                <View style={{backgroundColor:colors.primary,flex:1}}>
                 {/* <AppText children="Hello"/> */}
-                <View style={{alignItems:'center',marginVertical:'5%'}}>
-                <AppButton width='60%' text="Close" onPress={()=> setModal(false)}/>
+                <View style={{alignItems:'center',width:width*0.9,alignSelf:'center',marginVertical:'5%'}}>
+                <AppButton text="Close" onPress={()=> setModal(false)}/>
 
                 </View>
                 <FlatList
@@ -51,7 +50,7 @@ return (
                
                     data={items}
                     // numColumns={2}
-                    keyExtractor={(item,index) => index}
+                    keyExtractor={item => item.service_code}
                     // extraData={selectedId}
                     renderItem={({ item }) => {
                         return (
@@ -60,9 +59,9 @@ return (
                               onSelectedItem(item)
                               setModal(false)
                               }}
-                          style={{marginVertical:width*0.05,marginHorizontal:width*0.05,alignSelf:'center',borderBottomWidth:1,borderStyle:(Platform.OS='ios')?'solid':'dashed',borderBottomColor:colors.secondary}}>
+                          style={{marginVertical:width*0.05,marginHorizontal:width*0.05,alignSelf:'center'}}>
                                {/* <Image source={item.imageUri} style={{width:width*0.28,height:width*0.28,borderRadius:width*0.28,}}/> */}
-                               <AppText textAlign="center" children={item.title}/>
+                               <AppText textAlign="center" children={item.service_name}/>
                           </TouchableOpacity>
                            
                         );

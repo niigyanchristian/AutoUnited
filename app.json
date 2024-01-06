@@ -25,6 +25,7 @@
     },
     "web": {
       "favicon": "./app/assets/imgs/icon.png"
-    }
+    },
+    "scheme": "myapp"
   }
 }

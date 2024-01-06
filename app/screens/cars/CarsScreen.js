@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, StyleSheet, ScrollView, Image, TouchableOpacity } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
 
@@ -9,26 +9,48 @@ import useAuth from '../../auth/useAuth';
 import colors from '../../config/colors';
 import AppCarsCard from '../../components/AppCarsCard';
 import routes from '../../navigation/routes';
+import useApi from '../../hooks/useApi';
+import carsApi from '../../api/cars';
+import usecart from '../../auth/usecart';
+import useActiveScreenFunc from '../../hooks/useActiveScreenFunc';
 
-
-const data= [
-    {id:1},
-    {id:2},
-    {id:3},
-    // {id:4},
-    // {id:5},
-    // {id:6},
-]
 
 function CarsScreen({navigation}) {
-    const {width,height}= useAuth();
+    const {width,user}= useAuth();
+    const getMyCarsApi = useApi(carsApi.getMyCars);
+    const [data,setData]=useState([]);
+    const [items,setItems]=useState([]);
+
+    const getFunc = async () => {
+      setItems(await usecart.getCart());
+    };
+  useActiveScreenFunc().FocusedAndBlur(()=>getFunc(),()=>null)
+
+    useEffect(() => {
+        handleSubmit()
+      }, []);
+
+    const handleSubmit=()=>{
+        getMyCarsApi.request(user.token).
+        then((data)=>{
+          console.log("=>",data.data)
+            if(data.status=='200'){
+                setData(data.data.results)
+            }
+        })
+    }
 return (
 <View style={styles.container}>
     {/* <AppText>Vehicle management Screen</AppText> */}
-    <AppHeader Component={<AppText fontFamily='NunitoExtraBold' fontSize={width*0.05}>Cars</AppText>}/>
+    <AppHeader Component={<AppText fontFamily='NunitoExtraBold' fontSize={width*0.05}>Cars</AppText>} cartCount={items.length}/>
     <ScrollView style={{flex:1}} contentContainerStyle={{}} showsVerticalScrollIndicator={false}>
-        {data.map((item)=>(
-        <AppCarsCard key= {item.id}/>
+        {data.map((item,index)=>(
+        <AppCarsCard key= {index} onPress={()=>{
+            navigation.navigate(routes.CARS_TAB,{
+              screen:routes.CAR_DETAIL,
+              params: {item:item}
+              })
+          }}/>
         ))}
     </ScrollView>
 

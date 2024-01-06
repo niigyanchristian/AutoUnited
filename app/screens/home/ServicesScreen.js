@@ -34,16 +34,13 @@ function ServicesScreen({route,navigation}) {
     
   
     const handleSubmit = () => {
-        console.log(1234)
         setActive(true);
         useLocation().getLocation().
         then(
         (loc)=>{
-            console.log(loc)
         return nearMeApi.request(`?service_code=${cat}&long=${loc.longitude}&lat=${loc.latitude}`)},
         (e)=>alert('Unable to retrieve your location. Please check if your device location is turned on')).
         then((response)=>{
-            console.log(response.data.results)
         setData(response.data.results);
         }).catch((e)=>{
         console.error(e);

@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, StyleSheet, ScrollView, TouchableOpacity,Image, Platform } from 'react-native';
 import { FontAwesome,AntDesign,MaterialCommunityIcons,MaterialIcons } from '@expo/vector-icons';
 import Constants from 'expo-constants';
@@ -14,6 +14,8 @@ import { useTheme } from '../hooks/ThemeContext';
 import colors from '../config/colors';
 import AppScrowCard from '../components/AppScrowCard';
 import ListsOfProjects from '../components/listsOfProjects';
+import useActiveScreenFunc from '../hooks/useActiveScreenFunc';
+import usecart from '../auth/usecart';
 
 const data = [
     {id:1,company:'Shell',petrol:'13.58',diesel:'16.28',loc:'0'},
@@ -33,7 +35,13 @@ function MainSearchScreen({navigation}) {
     const {width,height} = useAuth();
     const {theme} =useTheme();
     const [view,setView] =useState(false);
+    const [items,setItems]=useState([]);
 
+    const getFunc = async () => {
+      setItems(await usecart.getCart());
+    };
+
+    useActiveScreenFunc().FocusedAndBlur(()=>getFunc(),()=>null)
     
 return (
 <View style={[styles.container,{height:height,backgroundColor:colors.primary}]}>
@@ -60,12 +68,16 @@ onPress={()=>
 
 </TouchableOpacity>
 <TouchableOpacity 
+style={{paddingRight:'5%'}}
 onPress={()=>
     navigation.navigate(routes.MAIN_SEARCH_TAB,{
     screen:routes.CART,
     })
     }> 
-    <AntDesign name="shoppingcart" size={width*0.08} color={theme.dark}/>
+    <AntDesign name="shoppingcart" size={width*0.08} color={theme.dark} />
+        <View style={{width:width*0.06,height:width*0.06,backgroundColor:colors.secondary,justifyContent:'center',alignItems:'center',borderRadius:width*0.05,position:'absolute',top:'-20%',right:'10%'}}>
+        <AppText color={colors.primary}>{items.length}</AppText>
+        </View>
     </TouchableOpacity>
     
     </View>

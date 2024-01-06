@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, StyleSheet,TouchableOpacity } from 'react-native';
 import { FontAwesome,AntDesign,MaterialCommunityIcons,MaterialIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
@@ -6,11 +6,16 @@ import useAuth from '../auth/useAuth';
 import { useTheme } from '../hooks/ThemeContext';
 import AppTextInput from './AppTextInput';
 import routes from '../navigation/routes';
+import AppText from './AppText';
+import colors from '../config/colors';
 
-function AppHeader({Component}) {
-    const {width,height} = useAuth();
+const data = []
+
+function AppHeader({Component,cartCount}) {
+    const {width,height,} = useAuth();
     const {theme} = useTheme();
     const navigation = useNavigation();
+
 return (
 <View style={[styles.header,{backgroundColor:theme.white,width:width,height:height*0.07,justifyContent:'space-between'}]}>
 <AntDesign name="arrowleft" size={width*0.08} color={theme.dark} onPress={()=>navigation.goBack()}/>
@@ -30,13 +35,16 @@ return (
     {/* </View> */}
     
     <TouchableOpacity 
-    style={{marginHorizontal:'1%'}}
+    style={{marginHorizontal:'1%',paddingRight:'5%'}}
     onPress={()=>
         navigation.navigate(routes.MAIN_SEARCH_TAB,{
         screen:routes.CART,
         })
         }>
         <AntDesign name="shoppingcart" size={width*0.08} color={theme.dark} />
+        <View style={{width:width*0.06,height:width*0.06,backgroundColor:colors.secondary,justifyContent:'center',alignItems:'center',borderRadius:width*0.05,position:'absolute',top:'-20%',right:'10%'}}>
+        <AppText color={colors.primary}>{cartCount}</AppText>
+        </View>
         </TouchableOpacity>
 </View>
 );

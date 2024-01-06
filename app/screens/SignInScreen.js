@@ -40,6 +40,9 @@ function SignInScreen({navigation}) {
         const result = await authApi.login(data);
     
         if (!result.ok) {
+            console.log('====================================');
+            console.log(result.data);
+            console.log('====================================');
             setActive(false)
             return;
         } else {
